@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
  
 export default function Profile() {
   const [data, setData] = useState(null)
@@ -19,7 +20,9 @@ export default function Profile() {
  
   return (
     <div>
+      <Image src = {data.img} alt = "duke logo" height = {75} width = {200}/>
       <h1>hello, {data.name}!</h1>
+      <h1>{data.message}</h1>
     </div>
   )
 }
