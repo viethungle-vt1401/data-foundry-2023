@@ -19,10 +19,26 @@ export default function Profile() {
   if (!data) return <p>No profile data</p>
  
   return (
-    <div>
-      <Image src = {data.img} alt = "duke logo" height = {75} width = {200}/>
-      <h1>hello, {data.name}!</h1>
-      <h1>{data.message}</h1>
-    </div>
+    <header>
+      <div id="header-block">
+        <img id = "logo" src = {data.img} alt = "duke logo" height = {75} width = {200}/>
+        <h1>Data Foundry</h1>
+      </div >
+      <div id="login-details">
+        logged in as {data.name} 
+        <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
+      </div>
+      <nav>
+        <a href="#database">Database</a>
+        <a href="#mydata">My Datasets</a>
+        <a href="#documentation">Documentation</a>
+      </nav>
+    </header>
+    
+  
+    
+  
+
+    
   )
 }
