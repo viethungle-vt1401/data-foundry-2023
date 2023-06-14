@@ -8,7 +8,7 @@ export default function Filters() {
     }
 
     return (
-        <div>
+        <div id="filter">
             <h1>Filters</h1>
             <label for="sensitivity">Sensitivity: </label>
             <select name="sensitivity" id="sensitivity" onChange={handleSensitivity}>
