@@ -3,12 +3,14 @@
 import React from 'react';
 import Profile from './profile';
 import PersonContact from './poc';
+import Filters from './filters';
 
 export default function Home() {
   return (
     <div>
       <Profile />
       <PersonContact />
+      <Filters />
     </div>
   )
 }
