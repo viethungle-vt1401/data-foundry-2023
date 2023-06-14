@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Navbar from '../navbar'
+import React from 'react'
+import MyData from './mydata'
  
 export default function Profile() {
   const [data, setData] = useState(null)
@@ -71,3 +74,4 @@ export default function Profile() {
     
   )
 }
+
