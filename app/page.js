@@ -2,11 +2,13 @@
 
 import React from 'react';
 import Profile from './profile';
+import PersonContact from './poc';
 
 export default function Home() {
   return (
     <div>
       <Profile />
+      <PersonContact />
     </div>
   )
 }

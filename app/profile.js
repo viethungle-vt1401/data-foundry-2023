@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
  
 export default function Profile() {
   const [data, setData] = useState(null)
@@ -33,13 +32,13 @@ export default function Profile() {
     <div id="menu">
       <ul id="menu-options">
         <li>
-          <a href="/datafoundry/" class="active-tab">Data Catalog</a>
+          <a href="/datafoundry/" className="active-tab">Data Catalog</a>
         </li>
         <li>
-          <a href="/datafoundry/mydata/" class="active-tab">My Datasets</a>
+          <a href="/datafoundry/mydata/" className="active-tab">My Datasets</a>
         </li>
         <li>
-          <a href="/datafoundry/documentation/" class="active-tab">Documentation</a>
+          <a href="/datafoundry/documentation/" className="active-tab">Documentation</a>
         </li>
       </ul>
     </div>
