@@ -3,18 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --duke-navy-blue: 1, 33, 105;
+  --duke-royal-blue: 0, 83, 155;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 1, 33, 105;
     --background-end-rgb: 1, 33, 105;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -29,12 +31,12 @@ body {
 table {
   width: 600px;
   height: 100px;
-  border: 2px solid white;
+  border: 2px solid rgb(0, 0, 0);
   text-align: center;
 }
 
 tr {
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 h1 {

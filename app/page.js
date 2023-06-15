@@ -1,8 +1,9 @@
- 'use client';
+'use client';
 
 import React from 'react';
-import Profile from './pages/profile';
+import Profile from '../pages/profile';
 import PersonContact from './poc';
+import styles from "./styles/Home.module.css";
 
 export default function Home() {
   return (

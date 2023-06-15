@@ -4,9 +4,13 @@ import Profile from './profile';
 import { defaultConfig } from 'next/dist/server/config-shared';
 
 
-export default () => (
-<header>
-    <h1>Documentation</h1>
-</header>
-)
+export default function Documentation(){
+    return (
+        <header>
+            <h1>Documentation</h1>
+        </header>
+    )
+}
+
+
 

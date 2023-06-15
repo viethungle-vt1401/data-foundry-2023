@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Navbar from '../navbar'
+import Navbar from '../app/navbar'
 import React from 'react'
-import MyData from './mydata'
  
 export default function Profile() {
   const [data, setData] = useState(null)
@@ -24,7 +23,7 @@ export default function Profile() {
   return (
     <div>
     <header>
-      <div id="header-block">
+      <div id="header-block" style={headerStyle}>
         <img id = "logo" src = {data.img} alt = "duke logo" height = {75} width = {200}/>
         <h1>Data Foundry</h1>
       </div >
@@ -38,6 +37,11 @@ export default function Profile() {
         <Link href="/mydata">My Datasets</Link>
         <Link href="/documentation">Documentation</Link>
     </nav>
+    <main>
+      <section id="database">
+        <h2>Data Catalog</h2>
+      </section>
+    </main> 
     </div>
 
 
