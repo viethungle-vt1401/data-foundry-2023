@@ -1,16 +1,21 @@
- 'use client';
-
-import React from 'react';
-import Profile from './profile';
-import PersonContact from './poc';
-import Filters from './filters';
+import React, { useEffect, useState } from 'react';
+import Profile from '../components/profile';
+import DataTable from '../components/data-table';
+import Filters from '../components/filters';
+import '../styles/globals.css'
 
 export default function Home() {
+  const [filters, setFilters] = useState({})
+
+  useEffect(() => {
+    console.log(filters)
+  })
+  
   return (
     <div>
       <Profile />
-      <PersonContact />
-      <Filters />
+      <DataTable filters={filters} />
+      <Filters setFilters={setFilters} />
     </div>
   )
 }

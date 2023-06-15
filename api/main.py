@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import psycopg2
 from pydantic import BaseModel
 from typing import List, Union
+import json
 
 
 class Data(BaseModel):
@@ -19,9 +20,11 @@ connection = psycopg2.connect(database="data_foundry",
 cur = connection.cursor()
 
 
-@app.get('/source-poc')
-async def get_poc() -> List[Data]:
-    cur.execute("SELECT data_source, poc FROM di")
+@app.get('/data-table/')
+async def get_poc(filtersString: str) -> List[Data]:
+    filters = json.loads(filtersString)
+    query = ' AND '.join([f"{key} = {filters[key]}" for key in filters])
+    cur.execute(f"SELECT data_source, poc, sensitivity FROM di WHERE {query}")
     rows = cur.fetchall()
     return [{
         "data_source": row[0],
@@ -31,4 +34,4 @@ async def get_poc() -> List[Data]:
 
 @app.get('/')
 async def get_profile_data():
-    return {"message": "how are you?", "name": "Ina!", "img": "/duke_wordmark_white.png"}
+    return {"message": "how are you?", "name": "Ina!", "img": "/images/duke_wordmark_white.png"}
