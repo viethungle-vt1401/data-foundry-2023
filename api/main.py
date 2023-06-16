@@ -2,18 +2,11 @@ from fastapi import FastAPI
 import psycopg2
 from pydantic import BaseModel
 from typing import List, Union
-from enum import Enum
 
 
 FIELDS = {
     "sensitivity": "ANY(sensitivity) = "
 }
-
-
-class Sensitivity(Enum):
-    Public: 1
-    Restricted: 2
-    Sensitive: 3
 
 
 class Filter(BaseModel):
@@ -40,11 +33,9 @@ cur = connection.cursor()
 
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
-    print(filters)
     query = f"SELECT data_source, poc, sensitivity, req_proc FROM datainv \
             WHERE '{filters.sensitivity}' = ANY(sensitivity) \
             AND req_proc = '{filters.request_process}';"
-    print(query)
     cur.execute(query)
     rows = cur.fetchall()
     return [{
