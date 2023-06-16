@@ -18,12 +18,15 @@ class Sensitivity(Enum):
 
 class Filter(BaseModel):
     sensitivity: str
+    request_process: str
+
 
 
 class Data(BaseModel):
     data_source: str
     poc: Union[List[str], None]
     sensitivity: Union[str, None]
+    req_proc: str
 
 
 app = FastAPI()
@@ -38,12 +41,15 @@ cur = connection.cursor()
 
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
-    cur.execute(f"SELECT data_source, poc, sensitivity FROM datainv WHERE '{filters.sensitivity}' = ANY(sensitivity);")
+    print(filters)
+    cur.execute(f"SELECT data_source, poc, sensitivity FROM datainv WHERE {filters.sensitivity} = ANY(sensitivity) ", 
+                f"WHERE req_proc = '{filters.request_process}';")
     rows = cur.fetchall()
     return [{
         "data_source": row[0],
         "poc": row[1],
-        "sensitivity": row[2]
+        "sensitivity": row[2],
+        "req_proc": row[3]
     } for row in rows]
 
 
