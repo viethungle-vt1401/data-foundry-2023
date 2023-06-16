@@ -53,4 +53,4 @@ async def get_poc() -> List[Data]:
 
 @app.get('/')
 async def get_profile_data():
-    return {"message": "how are you?", "name": "Ina!", "img": "/duke_wordmark_white.png"}
+    return {"message": "how are you?", "name": "Ina!", "photo": "/duke_wordmark_white.png"}
