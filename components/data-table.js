@@ -28,14 +28,16 @@ export default function DataTable({ filters }) {
               <th>Data Source</th>
               <th>Person of Contact</th>
               <th>Sensitivity</th>
+              <th>Request Process</th>
             </tr>
           </thead>
           <tbody>
-            {databases.map(({ data_source, poc, sensitivity }) => 
+            {databases.map(({ data_source, poc, sensitivity, req_proc }) => 
               <tr>
                 <td>{data_source}</td>
                 <td>{poc}</td>
                 <td>{sensitivity}</td>
+                <td>{req_proc}</td>
               </tr>)
             }
           </tbody>
