@@ -2,12 +2,28 @@ from fastapi import FastAPI
 import psycopg2
 from pydantic import BaseModel
 from typing import List, Union
-import json
+from enum import Enum
+
+
+FIELDS = {
+    "sensitivity": "ANY(sensitivity) = "
+}
+
+
+class Sensitivity(Enum):
+    Public: 1
+    Restricted: 2
+    Sensitive: 3
+
+
+class Filter(BaseModel):
+    sensitivity: str
 
 
 class Data(BaseModel):
     data_source: str
-    poc: Union[str, None]
+    poc: Union[List[str], None]
+    sensitivity: Union[str, None]
 
 
 app = FastAPI()
@@ -20,15 +36,14 @@ connection = psycopg2.connect(database="data_foundry",
 cur = connection.cursor()
 
 
-@app.get('/data-table/')
-async def get_poc(filtersString: str) -> List[Data]:
-    filters = json.loads(filtersString)
-    query = ' AND '.join([f"{key} = {filters[key]}" for key in filters])
-    cur.execute(f"SELECT data_source, poc, sensitivity FROM di WHERE {query}")
+@app.post('/data-table')
+async def get_data(filters: Filter) -> List[Data]:
+    cur.execute(f"SELECT data_source, poc, sensitivity FROM datainv WHERE '{filters.sensitivity}' = ANY(sensitivity);")
     rows = cur.fetchall()
     return [{
         "data_source": row[0],
-        "poc": row[1]
+        "poc": row[1],
+        "sensitivity": row[2]
     } for row in rows]
 
 

@@ -5,16 +5,19 @@ import Filters from '../components/filters';
 import '../styles/globals.css'
 
 export default function Home() {
-  const [filters, setFilters] = useState({})
+  const [filters, setFilters] = useState({"filters": {"sensitivity": "Public"}})
+  const [state, setState] = useState(Date.now())
 
   useEffect(() => {
-    console.log(filters)
-  })
-  
+    setState(Date.now());
+  }, [filters])
+
   return (
     <div>
       <Profile />
-      <DataTable filters={filters} />
+      <span key={state}>
+        <DataTable filters={filters} />
+      </span>
       <Filters setFilters={setFilters} />
     </div>
   )
