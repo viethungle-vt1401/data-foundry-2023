@@ -5,7 +5,7 @@ import Filters from '../components/filters';
 import '../styles/globals.css'
 
 export default function Home() {
-  const [filters, setFilters] = useState({"filters": {"sensitivity": "Public"}})
+  const [filters, setFilters] = useState({"filters": {"sensitivity": "Public", "request_process": "True"}})
   const [state, setState] = useState(Date.now())
 
   useEffect(() => {

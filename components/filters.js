@@ -16,9 +16,7 @@ export default function Filters({ setFilters }) {
                 ...prevState.filters,
                 "request_process": e.target.value
             }
-        })
-            
-            )
+        }))
     }
 
     return (
@@ -32,16 +30,13 @@ export default function Filters({ setFilters }) {
             </select>
 
 
-            <label for="request_process"> Request Process: </label>
+            <label for="request_process">Request Process: </label>
             <select name="request_process" id="req_proc" onChange={handleReqProccess}>
-                <option value="t">True</option>
-                <option value="f">False</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
             </select>
 
-
         </div>
-
-
 
     )
 }

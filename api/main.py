@@ -21,7 +21,6 @@ class Filter(BaseModel):
     request_process: str
 
 
-
 class Data(BaseModel):
     data_source: str
     poc: Union[List[str], None]
@@ -42,8 +41,11 @@ cur = connection.cursor()
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
     print(filters)
-    cur.execute(f"SELECT data_source, poc, sensitivity FROM datainv WHERE {filters.sensitivity} = ANY(sensitivity) ", 
-                f"WHERE req_proc = '{filters.request_process}';")
+    query = f"SELECT data_source, poc, sensitivity, req_proc FROM datainv \
+            WHERE '{filters.sensitivity}' = ANY(sensitivity) \
+            AND req_proc = '{filters.request_process}';"
+    print(query)
+    cur.execute(query)
     rows = cur.fetchall()
     return [{
         "data_source": row[0],
