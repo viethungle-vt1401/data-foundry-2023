@@ -24,7 +24,7 @@ export default function Profile() {
     <div>
     <header className="bg-duke-navy-blue">
       <div id="header-block">
-        <img id = "logo" src = {data.img} alt = "duke logo" height = {75} width = {200}/>
+        <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {200}/>
         <h1 className="text-white">Data Foundry</h1>
       </div >
       <div id="login-details" className="text-white">
@@ -43,37 +43,6 @@ export default function Profile() {
       </section>
     </main> 
     </div>
-
-
-
-    /* <div id="menu">
-      <ul id="menu-options">
-        <li>
-          <Link><a href="/datafoundry/" className="active-tab">Data Catalog</a></Link>
-        </li>
-        <li>
-          <Link><a href="/datafoundry/mydata/" className="active-tab">My Datasets</a></Link>
-        </li>
-        <li>
-          <Link><a href="/datafoundry/documentation/" className="active-tab">Documentation</a></Link>
-        </li>
-      </ul>
-    </div> */
-
-
-
-
-    
-    /* <main>
-      <section id="database">
-        <h2>Data Catalog</h2>
-      </section>
-      
-    </main> 
-    </div> */
-  
-    
-  
 
     
   )
