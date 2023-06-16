@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Profile from './profile';
 import React from 'react';
 
 export default function MyData(){
@@ -12,7 +11,7 @@ export default function MyData(){
             <h1>Data Foundry</h1>
          </div >
         <div id="login-details">
-            logged in as Ina! 
+            logged in as Ina!
              <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
         </div>
             <h1>My Datasets</h1>

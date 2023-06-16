@@ -4,6 +4,7 @@ import React from 'react';
 import Profile from '../pages/profile';
 import PersonContact from './poc';
 import styles from "./styles/Home.module.css";
+import './styles/globals.css';
 
 export default function Home() {
   return (

@@ -22,12 +22,12 @@ export default function Profile() {
  
   return (
     <div>
-    <header>
-      <div id="header-block" style={headerStyle}>
+    <header className="bg-duke-navy-blue">
+      <div id="header-block">
         <img id = "logo" src = {data.img} alt = "duke logo" height = {75} width = {200}/>
-        <h1>Data Foundry</h1>
+        <h1 className="text-white">Data Foundry</h1>
       </div >
-      <div id="login-details">
+      <div id="login-details" className="text-white">
         logged in as {data.name} 
         <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
       </div>
