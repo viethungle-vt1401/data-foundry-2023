@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Navbar from '../app/navbar'
+import Navbar from '../components/navbar'
 import React from 'react'
  
 export default function Profile() {
