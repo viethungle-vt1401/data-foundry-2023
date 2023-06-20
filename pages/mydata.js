@@ -18,12 +18,12 @@ export default function MyData(){
    
     return (
       <div>
-      <header className="bg-duke-navy-blue">
+      <header class="bg-duke-navy-blue">
         <div id="header-block">
           <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {200}/>
-          <h1 className="text-white">Data Foundry</h1>
+          <h1 class="text-white">Data Foundry</h1>
         </div >
-        <div id="login-details" className="text-white">
+        <div id="login-details" class="text-white">
           logged in as {data.name} 
           <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
         </div>
@@ -33,6 +33,9 @@ export default function MyData(){
           <Link href="/mydata">My Datasets</Link>
           <Link href="/documentation">Documentation</Link>
       </nav>
+      <div>
+            <h1>My Datasets</h1>
+        </div>
       </div>
   
     )

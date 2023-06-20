@@ -13,7 +13,8 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'duke-navy-blue': '#012169'
+        'duke-navy-blue': '#012169',
+        'hatteras': "#E2E6ED"
       }
     },
   },

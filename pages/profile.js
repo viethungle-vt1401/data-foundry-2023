@@ -22,24 +22,24 @@ export default function Profile() {
  
   return (
     <div>
-    <header className="bg-duke-navy-blue">
+    <header class="bg-duke-navy-blue">
       <div id="header-block">
         <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {200}/>
-        <h1 className="text-white">Data Foundry</h1>
+        <h1 class="text-white">Data Foundry</h1>
       </div >
-      <div id="login-details" className="text-white">
+      <div id="login-details" class="text-white">
         logged in as {data.name} 
         <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
       </div>
     </header>
-    <nav>
-        <Link href="/">Database</Link>
-        <Link href="/mydata">My Datasets</Link>
-        <Link href="/documentation">Documentation</Link>
+    <nav class="bg-hatteras">
+        <Link href="/" class="hover:text-duke-navy-blue">Database</Link>
+        <Link href="/mydata" class="hover:text-duke-navy-blue">My Datasets</Link>
+        <Link href="/documentation" class="hover:text-duke-navy-blue">Documentation</Link>
     </nav>
     <main>
       <section id="database">
-        <h2>Data Catalog</h2>
+        <h1>Data Catalog</h1>
       </section>
     </main> 
     </div>
