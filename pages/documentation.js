@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import '../styles/globals.css';
 
 export default function Documentation(){
     const [data, setData] = useState(null)

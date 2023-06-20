@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import React from 'react';
 import '../styles/globals.css';
-import Navbar from '@/app/navbar';
 
 export default function MyData(){
     const [data, setData] = useState(null)
