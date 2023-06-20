@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Profile from './profile';
-import { defaultConfig } from 'next/dist/server/config-shared';
-
 
 export default function Documentation(){
     const [data, setData] = useState(null)
@@ -18,28 +15,25 @@ export default function Documentation(){
     if (!data) return <p>No profile data</p>
 
     return (
-        <div>
+      <div>
         <header class="bg-duke-navy-blue">
-        <div id="header-block">
-            <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {200}/>
-            <h1 class="text-white">Data Foundry</h1>
-         </div >
-        <div id="login-details" class="text-white">
-            logged in as {data.name} 
-             <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
-        </div>
+          <div id="header-block">
+              <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {200}/>
+              <h1 class="text-white">Data Foundry</h1>
+          </div >
+          <div id="login-details" class="text-white">
+              logged in as {data.name} 
+              <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
+          </div>
         </header>
         <nav>
           <Link href="/">Database</Link>
           <Link href="/mydata">My Datasets</Link>
           <Link href="/documentation">Documentation</Link>
-      </nav>
+        </nav>
         <div>
             <h1>Documentation</h1>
         </div>
-        </div>
+      </div>
     )
 }
-
-
-
