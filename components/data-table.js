@@ -32,10 +32,12 @@ export default function DataTable({ filters }) {
     }
 
     return (
-      <div id="data-table">
-        <table>
-          <thead>
-            <tr>
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg p-4">
+        <table class="w-full text-gray-500 dark:text-black">
+
+        <thead class="text-xs text-duke-naby-blue uppercase bg-gray-200">
+            <tr class = "text-duke-navy-blue">
               <th>Data Source</th>
               <th>Platform</th>
               <th>Office</th>
@@ -53,8 +55,8 @@ export default function DataTable({ filters }) {
           <tbody>
             {databases.map(({data_source, platform, office, poc, app_auth, sensitivity, 
                              req_proc, req_form, app_req, provided, freeq, notes}) => 
-              <tr>
-                <td>{data_source}</td>
+            <tr class="bg-white border-b hover:bg-gray-50">
+            <td>{data_source}</td>
                 {printArray(platform)}
                 {printArray(office)}
                 {printArray(poc)}
