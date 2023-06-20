@@ -14,9 +14,15 @@ module.exports = {
       },
       colors: {
         'duke-navy-blue': '#012169',
-        'hatteras': "#E2E6ED"
+        'duke-royal-blue': '#00539B',
+        'hatteras': '#E2E6ED',
+        'graphite': '#666666'
+      },
+      fontFamily: {
+        sans: ['Open Sans', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+        serif: ['EB Garamond', 'Georgia', 'Times New Roman', 'Times', 'serif'],
       }
-    },
   },
   plugins: [],
+  }
 }
