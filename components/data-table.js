@@ -32,8 +32,7 @@ export default function DataTable({ filters }) {
     }
 
     return (
-      <div>
-        <h1>Databases</h1>
+      <div id="data-table">
         <table>
           <thead>
             <tr>

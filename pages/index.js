@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Profile from '../components/profile';
+import Profile from '../pages/profile';
 import DataTable from '../components/data-table';
 import Filters from '../components/filters';
 import '../styles/globals.css'

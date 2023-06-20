@@ -69,4 +69,4 @@ async def get_data(filters: Filter) -> List[Data]:
 
 @app.get('/')
 async def get_profile_data():
-    return {"message": "how are you?", "name": "Ina!", "img": "/images/duke_wordmark_white.png"}
+    return {"message": "how are you?", "name": "Ina!", "photo": "/images/duke_wordmark_white.png"}
