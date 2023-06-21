@@ -7,7 +7,7 @@ import '../styles/globals.css'
 export default function Home() {
   const [filters, setFilters] = useState({
     "filters": {
-      "office": "All",
+      "office": ["All"],
       "sensitivity": "All", 
       "request_process": "All",
       "request_form": "All",
