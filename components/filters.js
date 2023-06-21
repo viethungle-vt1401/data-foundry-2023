@@ -11,11 +11,11 @@ export default function Filters({ setFilters }) {
 
     return (
         <div id="filter">
-            <h1 class = "pl-4 text-xl text-base/loose">Filters</h1>
+            <h1 class = "pl-4 text-xl text-base/loose font-sans font-light text-duke-royal-blue">Filters</h1>
             <div>
                 {/* label for office dropdown */}
                 <label class = "pl-4 text-base/loose" for="office">Office: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="office" id="office" onChange={handleFilter}>
+                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid font-sans" name="office" id="office" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="OIT">OIT</option>
                     <option value="StuAff">Student Affairs</option>
