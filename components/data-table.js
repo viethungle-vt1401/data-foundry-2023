@@ -82,7 +82,7 @@ export default function DataTable({ filters }) {
   <div class="relative overflow-x-auto sm:rounded-lg m-10">
 
 
-      <SensitivityKey/>
+    
 
      <table class = "border-hidden">
           <thead class = "text-left text-gray-100/0 border-hidden grid-template-columns: 100px fr">

@@ -3,6 +3,7 @@ import Profile from '../pages/profile';
 import DataTable from '../components/data-table';
 import Filters from '../components/filters';
 import '../styles/globals.css'
+import SensitivityKey from '@/components/sensitivity-key';
 
 export default function Home() {
   const [filters, setFilters] = useState({
@@ -23,7 +24,12 @@ export default function Home() {
   return (
     <div>
       <Profile />
+      <div class="flex">
       <Filters setFilters={setFilters} />
+      <div class="ml-auto mr-10">
+      <SensitivityKey />
+      </div>
+      </div>
       <span key={state}>
         <DataTable filters={filters} />
       </span>
