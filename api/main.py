@@ -34,6 +34,8 @@ class Data(BaseModel):
     provided: Union[str, None]
     freeq: Union[str, None]
     notes: str
+    description: str
+    icon: str
 
 
 # app connects to fastapi so is why we say main:app when running uvicorn
@@ -57,7 +59,7 @@ async def get_data(filters: Filter) -> List[Data]:
                                        for field in FIELDS_QUERIES])
 
     query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
-              req_proc, req_form, app_req, provided, freeq, notes FROM datainv \
+              req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
               WHERE {query_conditions}"
 
     print(query)
@@ -77,7 +79,9 @@ async def get_data(filters: Filter) -> List[Data]:
         "app_req": row[8],
         "provided": row[9].replace("{", "").replace("}", ""),
         "freeq": row[10].replace("{", "").replace("}", ""),
-        "notes": row[11]
+        "notes": row[11],
+        "description": row[12],
+        "icon": row[13]
     } for row in rows]
 
 
