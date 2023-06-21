@@ -22,14 +22,14 @@ export default function Profile() {
   return (
     <div>
       <header class="bg-duke-navy-blue">
-        <div id="header-block">
-          <img id = "logo" src = {data.photo} alt = "duke logo" height = {100} width = {200}/>
-          <h1 class="text-white px-3.5 font-thin">Data Foundry</h1>
-        </div >
-        <div id="login-details" class="text-white">
-          logged in as {data.name} 
-          <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
+        <div id="header-block" class="flex">
+          <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {250} class="-ml-10 -mr-10 -mb-4 -mt-4"/>
+          <h1 class="text-white px-3.5 font-thin mt-6 -ml-10" >Data Foundry</h1>
+          <div id="login-details" dir="ltr" class="mt-10 text-white ml-auto mr-10">
+          Logged in as {data.name} 
+          <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl" class="text-dandelion text-right"> Log out</a>
         </div>
+        </div >
       </header>
       <nav class="bg-hatteras px-2.5 py-2.5 font-sans text-sm font-bold">
           <Link href="/" class="text-duke-royal-blue hover:text-duke-royal-blue px-3.5">DATABASE</Link>
@@ -38,7 +38,7 @@ export default function Profile() {
       </nav>
       <main>
         <section id="database">
-          <h1>Data Catalog</h1>
+          <h1 class="pl-4">Data Catalog</h1>
         </section>
       </main> 
     </div>
