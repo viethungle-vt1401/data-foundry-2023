@@ -1,3 +1,5 @@
+import Select from "react-select"
+
 export default function Filters({ setFilters }) {
 
     const handleFilter = (e) => {
@@ -9,24 +11,35 @@ export default function Filters({ setFilters }) {
         }))
     }
 
+    const handleOffice = (e) => {
+        setFilters(prevState => ({
+            filters: {
+                ...prevState.filters,
+                "office": e.length? e.map((office) => office.value) : ["All"]
+            }
+        }))
+    }
+
+    const offices = [
+        {value: "All", label: "All"},
+        {value: "OIT", label: "OIT"},
+        {value: "StuAff", label: "Student Affairs"},
+        {value: "ASM", label: "ASM"},
+        {value: "HR", label: "Human Resources"},
+        {value: "OUR", label: "OUR"},
+        {value: "SISS", label: "SISS"},
+        {value: "FMD", label: "FMD"},
+        {value: "PTS", label: "PTS"},
+        {value: "OTC", label: "OTC"}
+    ]
+
     return (
         <div id="filter">
             <h1 class = "pl-4 text-xl text-base/loose">Filters</h1>
-            <div>
+            <div className = "flex flex-wrap items-center">
                 {/* label for office dropdown */}
-                <label class = "pl-4 text-base/loose" for="office">Office: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="office" id="office" onChange={handleFilter}>
-                    <option value="All">All</option>
-                    <option value="OIT">OIT</option>
-                    <option value="StuAff">Student Affairs</option>
-                    <option value="ASM">ASM</option>
-                    <option value="HR">Human Resources</option>
-                    <option value="OUR">OUR</option>
-                    <option value="SISS">SISS</option>
-                    <option value="FMD">FMD</option>
-                    <option value="PTS">PTS</option>
-                    <option value="OTC">OTC</option>
-                </select>
+                <label class = "pl-4 text-base/loose mr-1" for="office">Office: </label>
+                <Select name="office" options={offices} onChange={handleOffice} isMulti />
             </div>
             <div>
                 {/* label for sensitivity dropdown */}
@@ -40,7 +53,7 @@ export default function Filters({ setFilters }) {
             </div>
             <div>
                 {/* label for request_process dropdown */}
-                <label class = "pl-4 text-base/loose" for="request_process"> Request Process: </label>
+                <label class = "pl-4 text-base/loose" for="request_process">Request Process: </label>
                 <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_process" id="req_proc" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="True">True</option>
