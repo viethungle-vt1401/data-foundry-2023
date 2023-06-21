@@ -25,7 +25,7 @@ export default function Home() {
       <Profile />
       <Filters setFilters={setFilters} />
       <span key={state}>
-      <DataTable filters={filters} />
+        <DataTable filters={filters} />
       </span>
     </div>
   )

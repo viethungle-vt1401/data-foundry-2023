@@ -14,8 +14,8 @@ export default function Filters({ setFilters }) {
             <h1 class = "pl-4 text-xl text-base/loose">Filters</h1>
             <div>
                 {/* label for office dropdown */}
-                <label for="office">Office: </label>
-                <select name="office" id="office" onChange={handleFilter}>
+                <label class = "pl-4 text-base/loose" for="office">Office: </label>
+                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="office" id="office" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="OIT">OIT</option>
                     <option value="StuAff">Student Affairs</option>
