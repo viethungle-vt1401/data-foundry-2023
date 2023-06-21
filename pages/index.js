@@ -5,12 +5,19 @@ import Filters from '../components/filters';
 import '../styles/globals.css'
 
 export default function Home() {
-  const [filters, setFilters] = useState({"filters": {"sensitivity": "Public", "request_process": "True"}})
+  const [filters, setFilters] = useState({
+    "filters": {
+      "office": "All",
+      "sensitivity": "All", 
+      "request_process": "All",
+      "request_form": "All",
+      "frequency": "All"
+    }})
+  
   const [state, setState] = useState(Date.now())
 
   useEffect(() => {
     setState(Date.now());
-    // do a console log to see what value so i can change
   }, [filters])
 
   return (
