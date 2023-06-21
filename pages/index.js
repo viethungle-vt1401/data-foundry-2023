@@ -10,7 +10,6 @@ export default function Home() {
 
   useEffect(() => {
     setState(Date.now());
-    // do a console log to see what value so i can change
   }, [filters])
 
   return (
