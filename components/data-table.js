@@ -4,6 +4,8 @@ import SensitivityKey from './sensitivity-key'
 
 export default function DataTable({ filters }) {
 
+  
+
     let lock = "/images/lock.png"
     let open_lock = "/images/open_lock.png"
     let book = "/images/book.png"
@@ -84,29 +86,28 @@ export default function DataTable({ filters }) {
 
     
 
-     <table class = "border-hidden">
+     <table class = "border-hidden border-spacing-px w-screen p-4">
           <thead class = "text-left text-gray-100/0 border-hidden grid-template-columns: 100px fr">
             <tr>
               <th>i</th>
-              <th>metadata</th>
+              <th>metadata</th>s
             </tr>
           </thead>
 
     {databases.map(({data_source, platform, office, poc, app_auth, sensitivity, 
-                             req_proc, req_form, app_req, provided, freeq, notes}) => 
+                             req_proc, req_form, app_req, provided, freeq, notes, description, icon}) => 
 
 
         <tbody>   
-
-          <tr>                
-            <td>
-                <img src = "/images/snoopy.jpeg" alt = "snoopy" height = "100" width = "100" class = "ml-10 rounded-lg"></img>
+          <tr class = "hover:bg-gray-200 rounded-l-lg">                
+            <td class = "rounded-l-lg">
+                <img src = {icon} alt = "snoopy" height = "110" width = "110" class = "ml-10 rounded-lg"></img>
 
             </td>
             
             
-            <td class = "rounded-lg text-left">
-              <div class = "text-left">
+            <td class = "rounded-r-lg text-left pl-10 pt-3 pb-3">
+              <div class = " pl-4 text-left">
                   <text class = "uppercase text-2xl"> {data_source}</text>
                   <text class = "font-thin text-s ml-2 text-gray-600">{office}</text> 
     
@@ -114,14 +115,18 @@ export default function DataTable({ filters }) {
 
 
             <div>
-              <text>Person of Contact: </text>
+              <text class = "pl-4">Person of Contact: </text>
               <text class = "font-thin">{poc}</text>
+            </div>
+
+            <div class = "pl-4 ">
+             <text class = "font-thin text-s">{description}</text>
             </div>
       
             <div class = "flex items-left mt-4 mb-2">
-                  <img src = {lock} alt = "Sensitive" width = "30" height = "30" class = "pl-3 mr-5"></img>
-                 <img src = {open_lock} alt = "Restricted" width = "30" height = "30" class = "pl-3 ml-5 mr-5"></img>
-                  <img src = {book} alt = "Public" width = "30" height = "30" class = "pl-3 ml-3 mr-7"></img>
+                  <img src = {checkLock(sensitivity)} alt = "Sensitive" width = "30" height = "30" class = "pl-3 mr-5"></img>
+                 <img src = {checkUnlock(sensitivity)} alt = "Restricted" width = "30" height = "30" class = "pl-3 ml-5 mr-5"></img>
+                  <img src = {checkPublic(sensitivity)} alt = "Public" width = "30" height = "30" class = "pl-3 ml-3 mr-7"></img>
 
             </div> 
           
@@ -130,9 +135,7 @@ export default function DataTable({ filters }) {
 
             </tbody> 
 
-            
-
-
+          
 
             )}
       
