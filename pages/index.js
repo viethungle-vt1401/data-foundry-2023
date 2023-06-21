@@ -16,10 +16,10 @@ export default function Home() {
   return (
     <div>
       <Profile />
-      <span key={state}>
-        <DataTable filters={filters} />
-      </span>
       <Filters setFilters={setFilters} />
+      <span key={state}>
+      <DataTable filters={filters} />
+      </span>
     </div>
   )
 }
