@@ -38,7 +38,7 @@ export default function Profile() {
       </nav>
       <main>
         <section id="database">
-          <h1 class = "font-normal pl-4">Data Catalog</h1>
+          <h1 class = "mb-4 mt-4 font-normal pl-6">Data Catalog</h1>
         </section>
       </main> 
     </div>
