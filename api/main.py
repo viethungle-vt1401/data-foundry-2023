@@ -27,7 +27,22 @@ def create_query_conditions(filters):
     return " AND ".join(query)
 
 
+def create_query_conditions(filters):
+    query = []
+    for field in FIELDS_QUERIES:
+        if field == "office":
+            office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
+                                 else "1 = 1" for office in getattr(filters, field)]
+            query.append(f"({' OR '.join(office_conditions)})")
+        elif getattr(filters, field) != "All":
+            query.append(FIELDS_QUERIES[field].format(getattr(filters, field)))
+        else:
+            query.append("1 = 1")
+    return " AND ".join(query)
+
+
 class Filter(BaseModel):
+    office: List[str]
     office: List[str]
     sensitivity: str
     request_process: str
@@ -48,6 +63,8 @@ class Data(BaseModel):
     provided: Union[str, None]
     freeq: Union[str, None]
     notes: str
+    description: str
+    icon: str
 
 
 # app connects to fastapi so is why we say main:app when running uvicorn
@@ -65,7 +82,7 @@ cur = connection.cursor()
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
     query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
-              req_proc, req_form, app_req, provided, freeq, notes FROM datainv \
+              req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
               WHERE {create_query_conditions(filters)}"
 
     cur.execute(query)
@@ -83,7 +100,9 @@ async def get_data(filters: Filter) -> List[Data]:
         "app_req": row[8],
         "provided": row[9].replace("{", "").replace("}", ""),
         "freeq": row[10].replace("{", "").replace("}", ""),
-        "notes": row[11]
+        "notes": row[11],
+        "description": row[12],
+        "icon": row[13]
     } for row in rows]
 
 
