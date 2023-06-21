@@ -92,6 +92,15 @@ async def get_data(filters: Filter) -> List[Data]:
     } for row in rows]
 
 
+
+@app.post('/data-foundry') 
+async def data_foundry(search_string: Union[str, None] = None) -> List[Data]:
+    query = 
+
+    
+
+
+
 @app.get('/')
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
