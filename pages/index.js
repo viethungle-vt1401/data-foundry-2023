@@ -3,6 +3,7 @@ import Profile from '../pages/profile';
 import DataTable from '../components/data-table';
 import Filters from '../components/filters';
 import '../styles/globals.css'
+import { SearchBar } from '@/components/SearchBar';
 
 export default function Home() {
   const [filters, setFilters] = useState({"filters": {"sensitivity": "Public", "request_process": "True"}})
@@ -20,6 +21,11 @@ export default function Home() {
         <DataTable filters={filters} />
       </span>
       <Filters setFilters={setFilters} />
+      <div className = "search-bar-container"> 
+      <SearchBar />
+      <div>SearchResults</div>
+
+      </div>
     </div>
   )
 }
