@@ -1,4 +1,6 @@
+import { Indie_Flower } from 'next/font/google'
 import { useState, useEffect } from 'react'
+import SensitivityKey from './sensitivity-key'
 
 export default function DataTable({ filters }) {
 
@@ -6,7 +8,6 @@ export default function DataTable({ filters }) {
     let open_lock = "/images/open_lock.png"
     let book = "/images/book.png"
     let transparent = "/images/transparent.png"
-
 
     const [databases, setDatabases] = useState([])
 
@@ -78,55 +79,56 @@ export default function DataTable({ filters }) {
 
     return (
 
-  <div class="relative overflow-x-auto sm:rounded-lg p-4">
-
-  
-
-    <h3 class = "flex justify-end font-normal underline underline-offset-4 ml-3 mr-10">Sensitivity Legend</h3>
+  <div class="relative overflow-x-auto sm:rounded-lg m-10">
 
 
-    <div class = "flex items-center justify-end mt-4 mb-2">
-      <img src = {lock} alt = "Sensitive" width = "30" height = "30" class = "pl-3 mr-5"></img>
-      <img src = {open_lock} alt = "Restricted" width = "30" height = "30" class = "pl-3 ml-5 mr-5"></img>
-      <img src = {book} alt = "Public" width = "30" height = "30" class = "pl-3 ml-3 mr-7"></img>
+      <SensitivityKey/>
 
-    </div>
-
-    <div class = "flex items-center justify-end mb-2">
-      <text class = "font-thin text-xs pr-4">Sensitive </text>
-      <text class = "font-thin text-xs pr-4">Restricted</text>
-      <text class = "font-thin text-xs mr-5">Public</text>
-
-    </div>
-
-{/* 
-     <table class = "border-none">
+     <table class = "border-hidden">
+          <thead class = "text-left text-gray-100/0 border-hidden grid-template-columns: 100px fr">
+            <tr>
+              <th>i</th>
+              <th>metadata</th>
+            </tr>
+          </thead>
 
     {databases.map(({data_source, platform, office, poc, app_auth, sensitivity, 
                              req_proc, req_form, app_req, provided, freeq, notes}) => 
 
-            <tr class = "flex rounded-lg">
 
-              <div>
-                  <img src = "/images/snoopy.jpeg" alt = "snoopy" height = "100" width = "100" class = "m-2 rounded-lg"></img>
-              </div>
+        <tbody>   
 
+          <tr>                
+            <td>
+                <img src = "/images/snoopy.jpeg" alt = "snoopy" height = "100" width = "100" class = "ml-10 rounded-lg"></img>
 
-              <div>
+            </td>
+            
+            
+            <td class = "rounded-lg text-left">
+              <div class = "text-left">
                   <text class = "uppercase text-2xl"> {data_source}</text>
-                  <text class = "font-thin text-s justified-l">{office}</text>
-                  
+                  <text class = "font-thin text-s ml-2 text-gray-600">{office}</text> 
+    
               </div>
 
 
-              <div class = "flex items-center justify-end mt-4 mb-2">
+            <div>
+              <text>Person of Contact: </text>
+              <text class = "font-thin">{poc}</text>
+            </div>
+      
+            <div class = "flex items-left mt-4 mb-2">
                   <img src = {lock} alt = "Sensitive" width = "30" height = "30" class = "pl-3 mr-5"></img>
                  <img src = {open_lock} alt = "Restricted" width = "30" height = "30" class = "pl-3 ml-5 mr-5"></img>
                   <img src = {book} alt = "Public" width = "30" height = "30" class = "pl-3 ml-3 mr-7"></img>
 
-               </div>
+            </div> 
           
-            </tr>
+            </td>
+          </tr> 
+
+            </tbody> 
 
             
 
@@ -136,7 +138,7 @@ export default function DataTable({ filters }) {
       
 
       
-    </table>  */}
+    </table>  
 
 
         <table class="table-auto w-full text-gray-500 dark:text-black border-seperate border-spacing-2">
