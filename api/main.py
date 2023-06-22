@@ -29,7 +29,6 @@ def create_query_conditions(filters):
 
 class Filter(BaseModel):
     office: List[str]
-    office: List[str]
     sensitivity: str
     request_process: str
     request_form: str
@@ -94,13 +93,11 @@ async def get_data(filters: Filter) -> List[Data]:
 
 @app.get('/search/{search_string}') 
 async def search(search_string: str = "hello"):
-    
     print(search_string)
-   
 
     return [{
         "data_source": "HR",
-        "platform":  "OIT" ,
+        "platform":  "OIT",
         "office": "FOUNDRY",
         "poc": "JOHN",
         "app_auth": "yes",
@@ -114,9 +111,6 @@ async def search(search_string: str = "hello"):
     }]
 
 
-
-
-    
 @app.get('/')
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
