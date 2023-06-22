@@ -26,9 +26,9 @@ export default function SearchBar() {
 
     return (
     <div className="input-wrapper">
-      <FaSearch id="search-icon"/>
+      <FaSearch className = "m-2" id="search-icon"/>
       <input
-        placeholder = "Type in Data source/ Person of Contact" 
+        placeholder = "Type in Data Source/Person of Contact" 
         value={input} onChange = {(e) => handleChange(e.target.value)}/> 
       </div>
     );

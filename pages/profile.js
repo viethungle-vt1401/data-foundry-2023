@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import React from 'react'
+import SearchBar from '@/components/search-bar'
  
 export default function Profile() {
   const [data, setData] = useState(null)
@@ -37,8 +38,11 @@ export default function Profile() {
           <Link href="/documentation" className="text-duke-navy-blue hover:text-duke-royal-blue px-3.5">DOCUMENTATION</Link>
       </nav>
       <main>
-        <section id="database">
+        <section id="database" className = "flex">
           <h1 className = "mb-4 mt-4 font-normal pl-6">Data Catalog</h1>
+          <div className = "search-bar-container mr-10 mb-5 ml-auto"> 
+        <SearchBar />
+      </div>
         </section>
       </main> 
     </div>
