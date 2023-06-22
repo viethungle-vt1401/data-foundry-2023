@@ -1,4 +1,3 @@
-
 export default function SensitivityKey() {
 
     let lock = "/images/lock.png"
@@ -46,27 +45,23 @@ export default function SensitivityKey() {
         }
       }
 
-    return(
+    return (
       <div>
 
-      <h3 class = "flex justify-end font-normal underline underline-offset-4 ml-3 mr-10">Sensitivity Legend</h3>
-
-
-      <div class = "flex items-center justify-end mt-4 mb-2">
-        <img src = {lock} alt = "Sensitive" width = "30" height = "30" class = "pl-3 mr-5"></img>
-        <img src = {open_lock} alt = "Restricted" width = "30" height = "30" class = "pl-3 ml-5 mr-5"></img>
-        <img src = {book} alt = "Public" width = "30" height = "30" class = "pl-3 ml-3 mr-7"></img>
-  
-      </div>
-  
-      <div class = "flex items-center justify-end mb-2">
-        <text class = "font-thin text-xs pr-4">Sensitive </text>
-        <text class = "font-thin text-xs pr-4">Restricted</text>
-        <text class = "font-thin text-xs mr-5">Public</text>
-  
-      </div>
+        <h3 className = "flex justify-end font-normal underline underline-offset-4 ml-3 mr-10">Sensitivity Legend</h3>
+        
+        <div className = "flex items-center justify-end mt-4 mb-2">
+          <img src = {lock} alt = "Sensitive" width = "30" height = "30" className = "pl-3 mr-5"></img>
+          <img src = {open_lock} alt = "Restricted" width = "30" height = "30" className = "pl-3 ml-5 mr-5"></img>
+          <img src = {book} alt = "Public" width = "30" height = "30" className = "pl-3 ml-3 mr-7"></img>
+        </div>
+    
+        <div className = "flex items-center justify-end mb-2">
+          <span className = "font-thin text-xs pr-4">Sensitive </span>
+          <span className = "font-thin text-xs pr-4">Restricted</span>
+          <span className = "font-thin text-xs mr-5">Public</span>
+        </div>
 
       </div>
-      )
-
+    )
 }

@@ -13,8 +13,23 @@ FIELDS_QUERIES = {
 }
 
 
+def create_query_conditions(filters):
+    query = []
+    for field in FIELDS_QUERIES:
+        if field == "office":
+            office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
+                                 else "1 = 1" for office in getattr(filters, field)]
+            query.append(f"({' OR '.join(office_conditions)})")
+        elif getattr(filters, field) != "All":
+            query.append(FIELDS_QUERIES[field].format(getattr(filters, field)))
+        else:
+            query.append("1 = 1")
+    return " AND ".join(query)
+
+
 class Filter(BaseModel):
-    office: str
+    office: List[str]
+    office: List[str]
     sensitivity: str
     request_process: str
     request_form: str
@@ -52,17 +67,9 @@ cur = connection.cursor()
 # This is our query that sends back info from the database
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
-    # Query is a string we concatenate to use multi lines
-    query_conditions = (" AND ").join([FIELDS_QUERIES[field].format(getattr(filters, field))
-                                       if getattr(filters, field) != "All"
-                                       else "1 = 1"
-                                       for field in FIELDS_QUERIES])
-
     query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
               req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
-              WHERE {query_conditions}"
-
-    print(query)
+              WHERE {create_query_conditions(filters)}"
 
     cur.execute(query)
     rows = cur.fetchall()

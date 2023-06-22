@@ -8,7 +8,7 @@ import SensitivityKey from '@/components/sensitivity-key';
 export default function Home() {
   const [filters, setFilters] = useState({
     "filters": {
-      "office": "All",
+      "office": ["All"],
       "sensitivity": "All", 
       "request_process": "All",
       "request_form": "All",
@@ -24,11 +24,11 @@ export default function Home() {
   return (
     <div>
       <Profile />
-      <div class="flex">
-      <Filters setFilters={setFilters} />
-      <div class="ml-auto mr-10">
-      <SensitivityKey />
-      </div>
+      <div className="flex">
+        <Filters setFilters={setFilters} />
+        <div className="ml-auto mr-10">
+          <SensitivityKey />
+        </div>
       </div>
       <span key={state}>
         <DataTable filters={filters} />
