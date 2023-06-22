@@ -52,5 +52,5 @@ h1 {
 }
 
 #filter select {
-  color: blue;
+  color: rgb(var(--duke-royal-blue));
 }
