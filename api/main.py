@@ -98,7 +98,6 @@ async def search(search_string: str = "hello"):
     print(search_string)
    
 
-
     return [{
         "data_source": "HR",
         "platform":  "OIT" ,
