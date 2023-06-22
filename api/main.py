@@ -92,6 +92,31 @@ async def get_data(filters: Filter) -> List[Data]:
     } for row in rows]
 
 
+@app.get('/search/{search_string}') 
+async def search(search_string: str = "hello"):
+    
+    print(search_string)
+   
+
+    return [{
+        "data_source": "HR",
+        "platform":  "OIT" ,
+        "office": "FOUNDRY",
+        "poc": "JOHN",
+        "app_auth": "yes",
+        "sensitivity": "PUBLIC",
+        "req_proc": "ABCD",
+        "req_form": "ABCDE",
+        "app_req": "DEFI",
+        "provided": "underwans",
+        "freeq": "inders",
+        "notes": "yueshba"
+    }]
+
+
+
+
+    
 @app.get('/')
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
