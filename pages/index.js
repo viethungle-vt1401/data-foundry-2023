@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Profile from '../pages/profile';
-import DataTable from '../components/data-table';
-import Filters from '../components/filters';
+import Profile from '@/pages/profile';
+import DataTable from '@/components/data-table';
+import Filters from '@/components/filters';
+import Footer from '@/components/footer';
 import '../styles/globals.css'
 import SensitivityKey from '@/components/sensitivity-key';
 
@@ -33,6 +34,7 @@ export default function Home() {
       <span key={state}>
         <DataTable filters={filters} />
       </span>
+      <Footer />
     </div>
   )
 }

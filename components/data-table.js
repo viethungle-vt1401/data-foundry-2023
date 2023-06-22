@@ -1,6 +1,4 @@
-import { Indie_Flower } from 'next/font/google'
 import { useState, useEffect } from 'react'
-import SensitivityKey from './sensitivity-key'
 
 export default function DataTable({ filters }) {
 
@@ -78,23 +76,17 @@ export default function DataTable({ filters }) {
     }
 
     return (
-      <div className="relative overflow-x-auto sm:rounded-lg m-10">
+      <div className="relative overflow-x-auto sm:rounded-lg">
 
-        <table className = "border-hidden border-spacing-px w-screen p-4">
-          <thead className = "text-left text-gray-100/0 border-hidden grid-template-columns: 100px fr">
-            <tr>
-              <th>i</th>
-              <th>metadata</th>
-            </tr>
-          </thead>
-
+        <table className = "border-hidden border-spacing-px w-screen my-5">
+     
           <tbody>   
             {databases.map(({data_source, platform, office, poc, app_auth, sensitivity, 
                                 req_proc, req_form, app_req, provided, freeq, notes, description, icon}) => 
               <tr className = "hover:bg-gray-200 rounded-l-lg">                
                 
                 <td className = "rounded-l-lg">
-                  <img src = {icon} alt = "snoopy" height = "110" width = "110" className = "ml-10 rounded-lg"></img>
+                  <img src = {icon} alt = "snoopy" height = "110" width = "110" className = "columns-10 ml-10 rounded-lg"></img>
                 </td>
                 
                 <td className = "rounded-r-lg text-left pl-10 pt-3 pb-3">
@@ -125,7 +117,7 @@ export default function DataTable({ filters }) {
 
         </table>  
 
-        <table className="table-auto w-full text-gray-500 dark:text-black border-seperate border-spacing-2">
+        {/* <table className="table-auto w-full text-gray-500 dark:text-black border-seperate border-spacing-2">
           <thead className="text-xs text-duke-naby-blue uppercase bg-gray-200">
             <tr className = "text-duke-navy-blue">
               <th>Data Source</th>
@@ -166,7 +158,7 @@ export default function DataTable({ filters }) {
                 {printArray(notes)}
               </tr>)}
           </tbody>
-        </table>
-      </div>
+          </table> */}
+      </div> 
     );
 } 
