@@ -80,7 +80,7 @@ export default function DataTable({ filters }) {
     return (
       <div className="relative overflow-x-auto sm:rounded-lg m-10">
         
-        <SensitivityKey/>
+        <SensitivityKey />
         
         <table className = "border-hidden border-spacing-px w-screen p-4">
           <thead className = "text-left text-gray-100/0 border-hidden grid-template-columns: 100px fr">
