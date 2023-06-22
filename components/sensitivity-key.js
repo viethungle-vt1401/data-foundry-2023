@@ -5,46 +5,6 @@ export default function SensitivityKey() {
     let book = "/images/book.png"
     let transparent = "/images/transparent.png"
 
-
-      function checkLock(arrayString){
-        if (arrayString == "" | arrayString == " " | arrayString == "{}" | arrayString == null) {
-          return "\n"
-        }
-        let toArray = arrayString.split(",")
-        if (toArray.includes("Sensitive")){
-          return lock;
-        }
-        else {
-          return transparent;
-        }
-      }
-  
-      function checkUnlock(arrayString){
-        if (arrayString == "" | arrayString == " " | arrayString == "{}" | arrayString == null) {
-          return "\n"
-        }
-        let toArray = arrayString.split(",")
-        if (toArray.includes("Restricted")){
-          return open_lock;
-        }
-        else {
-          return transparent;
-        }
-      }
-
-      function checkPublic(arrayString){
-        if (arrayString == "" | arrayString == " " | arrayString == "{}" | arrayString == null) {
-          return "\n"
-        }
-        let toArray = arrayString.split(",")
-        if (toArray.includes("Public")){
-          return book;
-        }
-        else {
-          return transparent;
-        }
-      }
-
     return (
       <div>
 
