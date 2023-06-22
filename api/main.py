@@ -27,20 +27,6 @@ def create_query_conditions(filters):
     return " AND ".join(query)
 
 
-def create_query_conditions(filters):
-    query = []
-    for field in FIELDS_QUERIES:
-        if field == "office":
-            office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
-                                 else "1 = 1" for office in getattr(filters, field)]
-            query.append(f"({' OR '.join(office_conditions)})")
-        elif getattr(filters, field) != "All":
-            query.append(FIELDS_QUERIES[field].format(getattr(filters, field)))
-        else:
-            query.append("1 = 1")
-    return " AND ".join(query)
-
-
 class Filter(BaseModel):
     office: List[str]
     office: List[str]

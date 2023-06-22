@@ -35,16 +35,16 @@ export default function Filters({ setFilters }) {
 
     return (
         <div id="filter">
-            <h1 class = "pl-4 text-xl text-base/loose">Filters</h1>
+            <h1 className = "pl-4 text-xl text-base/loose">Filters</h1>
             <div className = "flex flex-wrap items-center">
                 {/* label for office dropdown */}
-                <label class = "pl-4 text-base/loose mr-1" for="office">Office: </label>
+                <label className = "pl-4 text-base/loose mr-1" htmlFor="office">Office: </label>
                 <Select name="office" options={offices} onChange={handleOffice} isMulti />
             </div>
             <div>
                 {/* label for sensitivity dropdown */}
-                <label class = "pl-4 text-base/loose" for="sensitivity">Sensitivity: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="sensitivity" id="sensitivity" onChange={handleFilter}>
+                <label className = "pl-4 text-base/loose" htmlFor="sensitivity">Sensitivity: </label>
+                <select className = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="sensitivity" id="sensitivity" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="Public" >Public </option>
                     <option value="Restricted">Restricted</option>
@@ -53,8 +53,8 @@ export default function Filters({ setFilters }) {
             </div>
             <div>
                 {/* label for request_process dropdown */}
-                <label class = "pl-4 text-base/loose" for="request_process">Request Process: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_process" id="req_proc" onChange={handleFilter}>
+                <label className = "pl-4 text-base/loose" htmlFor="request_process">Request Process: </label>
+                <select className = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_process" id="req_proc" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="True">True</option>
                     <option value="False">False</option>
@@ -62,8 +62,8 @@ export default function Filters({ setFilters }) {
             </div>
             <div>
                 {/* label for request_form dropdown */}
-                <label class = "pl-4 text-base/loose" for="request_form">Request Form: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_form" id="req_form" onChange={handleFilter}>
+                <label className = "pl-4 text-base/loose" htmlFor="request_form">Request Form: </label>
+                <select className = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_form" id="req_form" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="True">True</option>
                     <option value="False">False</option>
@@ -71,8 +71,8 @@ export default function Filters({ setFilters }) {
             </div>
             <div>
                 {/* label for request_form dropdown */}
-                <label class = "pl-4 text-base/loose" for="frequency">Frequency: </label>
-                <select class = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="frequency" id="frequency" onChange={handleFilter}>
+                <label className = "pl-4 text-base/loose" htmlFor="frequency">Frequency: </label>
+                <select className = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="frequency" id="frequency" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="one-time">One-time</option>
                     <option value="ongoing">Ongoing</option>
