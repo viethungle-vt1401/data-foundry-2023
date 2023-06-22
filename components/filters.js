@@ -39,7 +39,7 @@ export default function Filters({ setFilters }) {
             <div className = "flex flex-wrap items-center">
                 {/* label for office dropdown */}
                 <label className = "pl-10 text-base/loose mr-1" htmlFor="office">Office: </label>
-                <Select name="office" options={offices} onChange={handleOffice} isMulti />
+                <Select name="office" options={offices} onChange={handleOffice} isMulti className = "border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid"/>
             </div>
             <div>
                 {/* label for sensitivity dropdown */}
