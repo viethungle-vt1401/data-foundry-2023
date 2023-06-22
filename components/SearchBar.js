@@ -7,8 +7,17 @@ export const SearchBar = () =>{
     const [input, setInput] = useState("");
 
     const fetchData = (value) => {
-        /* asynchronousetch(`/api/data-foundry/?search_string=${value}`) /*1446*/
-
+        console.log(value)
+        fetch('/api/search/' + value, {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+            })
     }
     const handleChange = (value) => {
         setInput(value)
@@ -19,7 +28,7 @@ export const SearchBar = () =>{
     <div className="input-wrapper">
     <FaSearch id="search-icon"/>
     <input
-     placeholder = "Type here to search" 
+     placeholder = "Type in Data source/ Person of Contact" 
      value={input} onChange = {(e) => handleChange(e.target.value)}/> 
     </div>
     );
