@@ -91,7 +91,7 @@ async def get_data(filters: Filter) -> List[Data]:
     } for row in rows]
 
 
-@app.get('/search/{search_string}') 
+@app.get('/search/{search_string}')
 async def search(search_string: str = "hello"):
     print(search_string)
 
