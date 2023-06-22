@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import {FaSearch} from "react-icons/fa"
-import "./SearchBar.css";
+import React, { useState } from "react";
+import { FaSearch } from "react-icons/fa"
+import "../styles/search-bar.css";
 
 
-export const SearchBar = () =>{
+export default function SearchBar() {
     const [input, setInput] = useState("");
 
     const fetchData = (value) => {
@@ -26,11 +26,11 @@ export const SearchBar = () =>{
 
     return (
     <div className="input-wrapper">
-    <FaSearch id="search-icon"/>
-    <input
-     placeholder = "Type in Data source/ Person of Contact" 
-     value={input} onChange = {(e) => handleChange(e.target.value)}/> 
-    </div>
+      <FaSearch id="search-icon"/>
+      <input
+        placeholder = "Type in Data source/ Person of Contact" 
+        value={input} onChange = {(e) => handleChange(e.target.value)}/> 
+      </div>
     );
 };
   

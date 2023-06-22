@@ -4,7 +4,7 @@ import DataTable from '@/components/data-table';
 import Filters from '@/components/filters';
 import Footer from '@/components/footer';
 import '../styles/globals.css'
-import { SearchBar } from '@/components/SearchBar';
+import SearchBar from '@/components/search-bar';
 import SensitivityKey from '@/components/sensitivity-key';
 
 export default function Home() {
