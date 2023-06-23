@@ -3,7 +3,6 @@ import Profile from '@/pages/profile';
 import DataTable from '@/components/data-table';
 import Filters from '@/components/filters';
 import Footer from '@/components/footer';
-import '../styles/globals.css'
 import SensitivityKey from '@/components/sensitivity-key';
 
 export default function Home() {

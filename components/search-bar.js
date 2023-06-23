@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa"
-import "../styles/search-bar.css";
-
 
 export default function SearchBar() {
     const [input, setInput] = useState("");
