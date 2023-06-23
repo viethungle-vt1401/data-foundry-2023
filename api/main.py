@@ -3,15 +3,36 @@ import psycopg2
 from pydantic import BaseModel
 from typing import List, Union
 
-# Fields is a shortcut "map" so we dont have to type everything out if we add new filters
-FIELDS = {
-    "sensitivity": "ANY(sensitivity) = "
+# FIELDS_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
+FIELDS_QUERIES = {
+    "office": "'{}' = ANY(office)",
+    "sensitivity": "'{}' = ANY(sensitivity)",
+    "request_process": "req_proc = '{}'",
+    "request_form": "req_form = '{}'",
+    "frequency": "'{}' = ANY(freeq)"
 }
 
 
+def create_query_conditions(filters):
+    query = []
+    for field in FIELDS_QUERIES:
+        if field == "office":
+            office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
+                                 else "1 = 1" for office in getattr(filters, field)]
+            query.append(f"({' OR '.join(office_conditions)})")
+        elif getattr(filters, field) != "All":
+            query.append(FIELDS_QUERIES[field].format(getattr(filters, field)))
+        else:
+            query.append("1 = 1")
+    return " AND ".join(query)
+
+
 class Filter(BaseModel):
+    office: List[str]
     sensitivity: str
     request_process: str
+    request_form: str
+    frequency: str
 
 
 class Data(BaseModel):
@@ -27,6 +48,8 @@ class Data(BaseModel):
     provided: Union[str, None]
     freeq: Union[str, None]
     notes: str
+    description: str
+    icon: str
 
 
 # app connects to fastapi so is why we say main:app when running uvicorn
@@ -43,11 +66,10 @@ cur = connection.cursor()
 # This is our query that sends back info from the database
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
-    # Query is a string we concatenate to use multi lines
-    query = f"SELECT data_source, platform, office,poc, app_auth, \
-            sensitivity, req_proc, req_form, app_req, provided, freeq, notes FROM datainv \
-            WHERE '{filters.sensitivity}' = ANY(sensitivity) \
-            AND req_proc = '{filters.request_process}';"
+    query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
+              req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
+              WHERE {create_query_conditions(filters)}"
+
     cur.execute(query)
     rows = cur.fetchall()
 
@@ -55,28 +77,27 @@ async def get_data(filters: Filter) -> List[Data]:
         "data_source": row[0],
         "platform": row[1],
         "office": row[2].replace("{", "").replace("}", ""),
-        "poc": (str(row[3]).replace("[", "").replace("]", "").replace("'", "")),
+        "poc": str(row[3]).replace("[", "").replace("]", "").replace("'", ""),
         "app_auth": row[4].replace("{", "").replace("}", ""),
         "sensitivity": row[5].replace("{", "").replace("}", ""),
-        "req_proc": row[7],
         "req_form": row[6],
-        "app_req": (row[8]),
+        "req_proc": row[7],
+        "app_req": row[8],
         "provided": row[9].replace("{", "").replace("}", ""),
-        "freeq": (row[10]).replace("{", "").replace("}", ""),
-        "notes": (row[11])
+        "freeq": row[10].replace("{", "").replace("}", ""),
+        "notes": row[11],
+        "description": row[12],
+        "icon": row[13]
     } for row in rows]
 
 
-@app.get('/search/{search_string}') 
+@app.get('/search/{search_string}')
 async def search(search_string: str = "hello"):
-    
     print(search_string)
-   
-
 
     return [{
         "data_source": "HR",
-        "platform":  "OIT" ,
+        "platform":  "OIT",
         "office": "FOUNDRY",
         "poc": "JOHN",
         "app_auth": "yes",
@@ -90,9 +111,6 @@ async def search(search_string: str = "hello"):
     }]
 
 
-
-
-    
 @app.get('/')
 async def get_profile_data():
-    return {"message": "how are you?", "name": "Ina!", "photo": "/images/duke_wordmark_white.png"}
+    return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}

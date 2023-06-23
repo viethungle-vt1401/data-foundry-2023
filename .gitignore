@@ -8,8 +8,10 @@
 /coverage
 
 # next.js
+node_modules/
 /.next/
 /out/
+package-lock.json
 
 # production
 /build
@@ -33,5 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# api 
+api/__pycache__/
+
+# vscode
 /.vscode/
 

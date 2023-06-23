@@ -52,8 +52,9 @@ h1 {
 }
 
 #filter select {
-  color: blue;
+  color: rgb(var(--duke-royal-blue));
 }
+
 .search-bar-container {
   padding-top: 5vh;
   width: 40%;

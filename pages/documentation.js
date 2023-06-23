@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import '../styles/globals.css';
 
 export default function Documentation(){
     const [data, setData] = useState(null)
@@ -23,8 +22,8 @@ export default function Documentation(){
               <h1 class="text-white">Data Foundry</h1>
           </div >
           <div id="login-details" class="text-white">
-              logged in as {data.name} 
-              <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> log out</a>
+              Logged in as {data.name} 
+              <a href="https://groups.oit.duke.edu/Shibboleth.sso/Logout?return=https://shib.oit.duke.edu/cgi-bin/logout.pl"> Log out</a>
           </div>
         </header>
         <nav class="bg-hatteras px-2.5 py-2.5 font-sans text-sm font-bold">

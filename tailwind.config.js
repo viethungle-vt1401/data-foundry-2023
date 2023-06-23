@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      columns: {
+          
+      },
+
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -16,7 +20,8 @@ module.exports = {
         'duke-navy-blue': '#012169',
         'duke-royal-blue': '#00539B',
         'hatteras': '#E2E6ED',
-        'graphite': '#666666'
+        'graphite': '#666666',
+        'dandelion': '#FFD960'
       },
       fontFamily: {
         sans: ['Open Sans', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
