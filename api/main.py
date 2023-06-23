@@ -1,30 +1,7 @@
 from fastapi import FastAPI
-import psycopg2
 from pydantic import BaseModel
 from typing import List, Union
-
-# FIELDS_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
-FIELDS_QUERIES = {
-    "office": "'{}' = ANY(office)",
-    "sensitivity": "'{}' = ANY(sensitivity)",
-    "request_process": "req_proc = '{}'",
-    "request_form": "req_form = '{}'",
-    "frequency": "'{}' = ANY(freeq)"
-}
-
-
-def create_query_conditions(filters):
-    query = []
-    for field in FIELDS_QUERIES:
-        if field == "office":
-            office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
-                                 else "1 = 1" for office in getattr(filters, field)]
-            query.append(f"({' OR '.join(office_conditions)})")
-        elif getattr(filters, field) != "All":
-            query.append(FIELDS_QUERIES[field].format(getattr(filters, field)))
-        else:
-            query.append("1 = 1")
-    return " AND ".join(query)
+from search_filter import SearchFilter
 
 
 class Filter(BaseModel):
@@ -55,58 +32,21 @@ class Data(BaseModel):
 # app connects to fastapi so is why we say main:app when running uvicorn
 app = FastAPI()
 
-connection = psycopg2.connect(database="data_foundry",
-                              user="data_foundry_user",
-                              password="***REMOVED***",
-                              host="codeplus-postgres-test-01.oit.duke.edu",
-                              port="5432")
-cur = connection.cursor()
+# search_filter is the object that stores filters and search_strings
+search_filter = SearchFilter()
 
 
 # This is our query that sends back info from the database
 @app.post('/data-table')
 async def get_data(filters: Filter) -> List[Data]:
-    query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
-              req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
-              WHERE {create_query_conditions(filters)}"
+    search_filter.update_filters(filters)
+    return search_filter.query()
 
-    cur.execute(query)
-    rows = cur.fetchall()
-
-    return [{
-        "data_source": row[0],
-        "platform": row[1],
-        "office": row[2].replace("{", "").replace("}", ""),
-        "poc": str(row[3]).replace("[", "").replace("]", "").replace("'", ""),
-        "app_auth": row[4].replace("{", "").replace("}", ""),
-        "sensitivity": row[5].replace("{", "").replace("}", ""),
-        "req_form": row[6],
-        "req_proc": row[7],
-        "app_req": row[8],
-        "provided": row[9].replace("{", "").replace("}", ""),
-        "freeq": row[10].replace("{", "").replace("}", ""),
-        "notes": row[11],
-        "description": row[12],
-        "icon": row[13]
-    } for row in rows]
 
 @app.get('/search/{search_string}')
 async def search(search_string: str = ""):
-    print(search_string)
-
-    query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
-              req_proc, req_form, app_req, provided, freeq, notes, description, icon \
-              FROM datainv \
-              WHERE data_source LIKE '%{search_string}%' \
-              OR EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE name like '%{search_string}%')"
-
-    cur.execute(query)
-    rows = cur.fetchall()
-
-    return [{
-        "data_source": row[0],
-        "poc": row[3]
-    } for row in rows]
+    search_filter.update_search_string(search_string)
+    return search_filter.query()
 
 
 @app.get('/')
