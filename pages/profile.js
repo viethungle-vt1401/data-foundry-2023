@@ -41,8 +41,8 @@ export default function Profile() {
         <section id="database" className = "flex">
           <h1 className = "mb-4 mt-4 font-normal pl-6">Data Catalog</h1>
           <div className = "search-bar-container mr-10 mb-5 ml-auto"> 
-        <SearchBar />
-      </div>
+            <SearchBar />
+          </div>
         </section>
       </main> 
     </div>
