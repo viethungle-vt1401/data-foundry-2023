@@ -90,25 +90,23 @@ async def get_data(filters: Filter) -> List[Data]:
         "icon": row[13]
     } for row in rows]
 
-
 @app.get('/search/{search_string}')
-async def search(search_string: str = "hello"):
+async def search(search_string: str = ""):
     print(search_string)
 
+    query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
+              req_proc, req_form, app_req, provided, freeq, notes, description, icon \
+              FROM datainv \
+              WHERE data_source LIKE '%{search_string}%' \
+              OR EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE name like '%{search_string}%')"
+
+    cur.execute(query)
+    rows = cur.fetchall()
+
     return [{
-        "data_source": "HR",
-        "platform":  "OIT",
-        "office": "FOUNDRY",
-        "poc": "JOHN",
-        "app_auth": "yes",
-        "sensitivity": "PUBLIC",
-        "req_proc": "ABCD",
-        "req_form": "ABCDE",
-        "app_req": "DEFI",
-        "provided": "underwans",
-        "freeq": "inders",
-        "notes": "yueshba"
-    }]
+        "data_source": row[0],
+        "poc": row[3]
+    } for row in rows]
 
 
 @app.get('/')
