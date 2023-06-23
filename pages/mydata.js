@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import React from 'react';
-// import '@/styles/globals.css';
 
 export default function MyData(){
     const [data, setData] = useState(null)
