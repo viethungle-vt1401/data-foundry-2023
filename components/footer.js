@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function Footer() {
     return (
         <footer className="bg-duke-navy-blue rounded-lg shadow m-1">
@@ -8,10 +10,10 @@ export default function Footer() {
                     </a>
                     <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
-                            <a href="#" className="mr-4 hover:underline md:mr-6 ">About</a>
+                            <Link href="/documentation" className="mr-4 hover:underline md:mr-6 ">About</Link>
                         </li>
                         <li>
-                            <a href="#" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                            <a href="https://oarc.duke.edu/privacy/duke-university-privacy-statement/" className="mr-4 hover:underline md:mr-6">Privacy Policy</a>
                         </li>
                         <li>
                             <a href="#" className="mr-4 hover:underline md:mr-6 ">Licensing</a>
