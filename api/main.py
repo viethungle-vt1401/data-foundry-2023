@@ -52,3 +52,6 @@ async def search(search_string: str = ""):
 @app.get('/')
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
+
+
+
