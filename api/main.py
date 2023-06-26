@@ -28,6 +28,7 @@ class Data(BaseModel):
     description: str
     icon: str
 
+
 # app connects to fastapi so is why we say main:app when running uvicorn
 app = FastAPI()
 
@@ -49,9 +50,7 @@ async def get_data(filters: Filter, search_string: str = "") -> List[Data]:
     search_filter.update_search_string(search_string)
     return search_filter.query()
 
+
 @app.get('/')
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
-
-
-
