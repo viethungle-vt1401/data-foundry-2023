@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function DataTable({ filters }) {
+export default function DataTable({ filters, searchString }) {
 
     let lock = "/images/lock.png"
     let open_lock = "/images/open_lock.png"
@@ -11,7 +11,8 @@ export default function DataTable({ filters }) {
 
     useEffect(() => {
         console.log(filters.filters)
-        fetch('/api/data-table', {
+        console.log(searchString)
+        fetch("/api/data-table/" + searchString, {
           method: 'POST',
           headers: {
             "Content-Type": "application/json",

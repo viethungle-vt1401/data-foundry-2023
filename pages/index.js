@@ -14,16 +14,18 @@ export default function Home() {
       "request_form": "All",
       "frequency": "All"
     }})
+
+  const [searchString, setSearchString] = useState("")
   
   const [state, setState] = useState(Date.now())
 
   useEffect(() => {
     setState(Date.now());
-  }, [filters])
+  }, [filters, searchString])
 
   return (
     <div>
-      <Profile />
+      <Profile setSearchString={setSearchString} />
       <div className="flex">
         <Filters setFilters={setFilters} />
         <div className="ml-auto mr-10">
@@ -31,7 +33,7 @@ export default function Home() {
         </div>
       </div>
       <span key={state}>
-        <DataTable filters={filters} />
+        <DataTable filters={filters} searchString={searchString} />
       </span>
       <Footer />
     </div>

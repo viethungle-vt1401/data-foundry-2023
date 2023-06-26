@@ -1,20 +1,30 @@
 import psycopg2
 
-# FIELDS_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
-FIELDS_QUERIES = {
+# FILTER_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
+FILTER_QUERIES = {
     "office": "'{}' = ANY(office)",
     "sensitivity": "'{}' = ANY(sensitivity)",
     "request_process": "req_proc = '{}'",
     "request_form": "req_form = '{}'",
     "frequency": "'{}' = ANY(freeq)",
-    "data_source": "data_source LIKE '%{}%'",
-    "poc": "EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE name LIKE '%{}%') "
+}
+
+SEARCH_QUERIES = {
+    "data_source": "LOWER(data_source) LIKE LOWER('%{}%')",
+    "poc": "EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE LOWER(name) LIKE LOWER('%{}%'))"
 }
 
 
 class SearchFilter:
     def __init__(self):
-        self.filters = {}
+        self.filters = {
+            "filters": {
+                "office": ["All"],
+                "sensitivity": "All", 
+                "request_process": "All",
+                "request_form": "All",
+                "frequency": "All"
+        }}
         self.search_string = ""
 
         self.connection = psycopg2.connect(database="data_foundry",
@@ -25,23 +35,34 @@ class SearchFilter:
 
         self.cur = self.connection.cursor()
 
-    def create_query_conditions(self):
-        query = []
-        for field in FIELDS_QUERIES:
+    def create_filter_conditions(self):
+        filter_query = []
+        for field in FILTER_QUERIES:
             if field == "office":
-                office_conditions = [FIELDS_QUERIES[field].format(office) if office != "All"
+                office_conditions = [FILTER_QUERIES[field].format(office) if office != "All"
                                      else "1 = 1" for office in getattr(self.filters, field)]
-                query.append(f"({' OR '.join(office_conditions)})")
+                filter_query.append(f"({' OR '.join(office_conditions)})")
             elif getattr(self.filters, field) != "All":
-                query.append(FIELDS_QUERIES[field].format(getattr(self.filters, field)))
+                filter_query.append(FILTER_QUERIES[field].format(getattr(self.filters, field)))
             else:
-                query.append("1 = 1")
-        return " AND ".join(query)
+                filter_query.append("1 = 1")
+        return " AND ".join(filter_query)
 
+    def create_search_conditions(self):
+        if self.search_string == "":
+            return "1 = 1"
+        
+        search_query = []
+        for field in SEARCH_QUERIES:
+            search_query.append(SEARCH_QUERIES[field].format(self.search_string))
+        return f"({' OR '.join(search_query)})"
+    
     def query(self):
         query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
               req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
-              WHERE {self.create_query_conditions()}"
+              WHERE {self.create_filter_conditions()} AND {self.create_search_conditions()}"
+
+        print(query)
 
         self.cur.execute(query)
         rows = self.cur.fetchall()
@@ -63,8 +84,8 @@ class SearchFilter:
             "icon": row[13]
         } for row in rows]
 
-    def update_filters(self, filter):
-        self.filter = filter
+    def update_filters(self, filters):
+        self.filters = filters
 
     def update_search_string(self, search_string):
-        self.search_string = search_string
+        self.search_string = search_string.strip(" ")

@@ -28,7 +28,6 @@ class Data(BaseModel):
     description: str
     icon: str
 
-
 # app connects to fastapi so is why we say main:app when running uvicorn
 app = FastAPI()
 
@@ -38,16 +37,17 @@ search_filter = SearchFilter()
 
 # This is our query that sends back info from the database
 @app.post('/data-table')
-async def get_data(filters: Filter) -> List[Data]:
+async def get_data_default(filters: Filter) -> List[Data]:
     search_filter.update_filters(filters)
+    search_filter.update_search_string("")
     return search_filter.query()
 
 
-@app.get('/search/{search_string}')
-async def search(search_string: str = ""):
+@app.post('/data-table/{search_string}')
+async def get_data(filters: Filter, search_string: str = "") -> List[Data]:
+    search_filter.update_filters(filters)
     search_filter.update_search_string(search_string)
     return search_filter.query()
-
 
 @app.get('/')
 async def get_profile_data():
