@@ -4,18 +4,6 @@ import React from 'react';
 import Header from '@/components/header';
 
 export default function MyData(){
-    const [data, setData] = useState(null)
-   
-    useEffect(() => {
-      fetch('/api')
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data)
-        })
-    }, [])
-   
-    if (!data) return <p>No profile data</p>
-   
     return (
       <div>
       <Header />

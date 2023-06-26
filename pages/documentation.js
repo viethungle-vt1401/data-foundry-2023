@@ -3,18 +3,6 @@ import Link from 'next/link';
 import Header from '@/components/header';
 
 export default function Documentation(){
-    const [data, setData] = useState(null)
-   
-    useEffect(() => {
-      fetch('/api')
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data)
-        })
-    }, [])
-   
-    if (!data) return <p>No profile data</p>
-
     return (
       <div>
         <Header />
