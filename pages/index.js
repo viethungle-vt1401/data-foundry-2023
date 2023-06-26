@@ -24,15 +24,15 @@ export default function Home() {
   return (
     <div>
       <Profile />
-      <div className="flex">
-        <Filters setFilters={setFilters} />
-        <div className="ml-auto mr-10">
+      <div className="flex justify-start">
+        <Filters className="mr-10"setFilters={setFilters} />
+        <div className="ml-auto mr-10 self-end">
           <SensitivityKey />
         </div>
-      </div>
-      <span key={state}>
+        <span key={state}>
         <DataTable filters={filters} />
       </span>
+      </div>
       <Footer />
     </div>
   )
