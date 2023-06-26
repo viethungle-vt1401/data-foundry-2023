@@ -61,9 +61,7 @@ class SearchFilter:
         query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
               req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
               WHERE {self.create_filter_conditions()} AND {self.create_search_conditions()}"
-
-        print(query)
-
+        
         self.cur.execute(query)
         rows = self.cur.fetchall()
 
