@@ -10,11 +10,11 @@ export default function SearchBar({ setSearchString }) {
     }
 
     return (
-    <div className="input-wrapper">
-      <FaSearch className = "m-2" id="search-icon"/>
-      <input
-        placeholder = "Type Data Source/ Person of Contact" 
-        value={input} onChange = {(e) => handleChange(e.target.value)}/> 
+      <div className="input-wrapper">
+        <FaSearch className = "m-2" id="search-icon"/>
+        <input
+          placeholder = "Type Data Source/Person of Contact" 
+          value={input} onChange = {(e) => handleChange(e.target.value)}/> 
       </div>
     );
 };
