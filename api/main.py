@@ -55,7 +55,7 @@ async def get_data(filters: Filter, search_string: str = "") -> List[Data]:
 async def get_profile_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
 
+
 @app.get('/header')
 async def get_header_data():
     return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
-

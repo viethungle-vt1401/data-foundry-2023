@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import React from 'react'
  
-
-
 export default function Header() {
     const [data, setData] = useState(null)
  
@@ -13,6 +11,8 @@ export default function Header() {
           setData(data)
         })
     }, [])
+
+    if (!data) return;
 
     return (
         <header className="bg-duke-navy-blue">
