@@ -41,3 +41,4 @@ api/__pycache__/*
 # vscode
 /.vscode/
 
+node_modules
