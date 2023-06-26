@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import SearchBar from '@/components/search-bar'
  
-export default function Profile() {
+export default function Profile({ setSearchString }) {
   const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(false)
  
@@ -41,7 +41,7 @@ export default function Profile() {
         <section id="database" className = "flex">
           <h1 className = "mb-4 mt-4 font-normal pl-6">Data Catalog</h1>
           <div className = "search-bar-container mr-10 mb-5 ml-auto"> 
-            <SearchBar />
+            <SearchBar setSearchString={setSearchString} />
           </div>
         </section>
       </main> 
