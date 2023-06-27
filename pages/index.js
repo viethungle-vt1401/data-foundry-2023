@@ -5,6 +5,8 @@ import Filters from '@/components/filters';
 import Footer from '@/components/footer';
 import SensitivityKey from '@/components/sensitivity-key';
 
+// Go Data Foundry!
+
 export default function Home() {
   const [filters, setFilters] = useState({
     "filters": {
@@ -26,15 +28,15 @@ export default function Home() {
   return (
     <div>
       <Profile setSearchString={setSearchString} />
-      <div className="flex">
-        <Filters setFilters={setFilters} />
-        <div className="ml-auto mr-10">
+      <div className="flex justify-start">
+        <Filters className="mr-10" setFilters={setFilters} />
+        <div className="ml-auto mr-10 self-end">
           <SensitivityKey />
         </div>
+        <span key={state}>
+          <DataTable filters={filters} searchString={searchString} />
+        </span>
       </div>
-      <span key={state}>
-        <DataTable filters={filters} searchString={searchString} />
-      </span>
       <Footer />
     </div>
   )

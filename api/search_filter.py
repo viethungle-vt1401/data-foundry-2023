@@ -20,11 +20,13 @@ class SearchFilter:
         self.filters = {
             "filters": {
                 "office": ["All"],
-                "sensitivity": "All", 
+                "sensitivity": "All",
                 "request_process": "All",
                 "request_form": "All",
                 "frequency": "All"
-        }}
+            }
+        }
+
         self.search_string = ""
 
         self.connection = psycopg2.connect(database="data_foundry",
@@ -51,18 +53,16 @@ class SearchFilter:
     def create_search_conditions(self):
         if self.search_string == "":
             return "1 = 1"
-        
+
         search_query = []
         for field in SEARCH_QUERIES:
             search_query.append(SEARCH_QUERIES[field].format(self.search_string))
         return f"({' OR '.join(search_query)})"
-    
+
     def query(self):
         query = f"SELECT data_source, platform, office, poc, app_auth, sensitivity, \
               req_proc, req_form, app_req, provided, freeq, notes, description, icon FROM datainv \
               WHERE {self.create_filter_conditions()} AND {self.create_search_conditions()}"
-
-        print(query)
 
         self.cur.execute(query)
         rows = self.cur.fetchall()

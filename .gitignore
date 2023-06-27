@@ -36,8 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 # api 
-api/__pycache__/
+api/__pycache__/*
 
 # vscode
 /.vscode/
 
+node_modules
