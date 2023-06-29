@@ -32,7 +32,7 @@ class DatabaseQuery:
 
         self.connection = psycopg2.connect(database="data_foundry",
                                            user="data_foundry_user",
-                                           password=os.getenv('DB_USERNAME'),
+                                           password=os.getenv('DB_PASSWORD'),
                                            host="codeplus-postgres-test-01.oit.duke.edu",
                                            port="5432")
 
