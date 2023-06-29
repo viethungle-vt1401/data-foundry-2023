@@ -1,4 +1,5 @@
 import psycopg2
+import os
 
 # FILTER_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
 FILTER_QUERIES = {
@@ -31,7 +32,7 @@ class DatabaseQuery:
 
         self.connection = psycopg2.connect(database="data_foundry",
                                            user="data_foundry_user",
-                                           password="***REMOVED***",
+                                           password=os.getenv('DB_USERNAME'),
                                            host="codeplus-postgres-test-01.oit.duke.edu",
                                            port="5432")
 
