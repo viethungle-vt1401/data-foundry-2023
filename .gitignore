@@ -37,6 +37,7 @@ next-env.d.ts
 
 # api 
 api/__pycache__/*
+api/.env
 
 # vscode
 /.vscode/
