@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List, Union
-from search_filter import SearchFilter
+from database_query import DatabaseQuery
 
 
 class Filter(BaseModel):
@@ -14,43 +14,42 @@ class Filter(BaseModel):
 
 class Data(BaseModel):
     data_source: str
-    platform: str
     office: str
     poc: str
-    app_auth: str
     sensitivity: Union[str, None]
-    req_proc: bool
-    req_form: bool
-    app_req: str
-    provided: Union[str, None]
     freeq: Union[str, None]
-    notes: str
     description: str
     icon: str
+    uid: str
 
 
 # app connects to fastapi so is why we say main:app when running uvicorn
 app = FastAPI()
 
 # search_filter is the object that stores filters and search_strings
-search_filter = SearchFilter()
+database_query = DatabaseQuery()
 
 
 # This is our query that sends back info from the database
 @app.post('/data-table')
 async def get_data_default(filters: Filter) -> List[Data]:
-    search_filter.update_filters(filters)
-    search_filter.update_search_string("")
-    return search_filter.query()
+    database_query.update_filters(filters)
+    database_query.update_search_string("")
+    return database_query.query_filter_and_search()
 
 
 @app.post('/data-table/{search_string}')
-async def get_data(filters: Filter, search_string: str = "") -> List[Data]:
-    search_filter.update_filters(filters)
-    search_filter.update_search_string(search_string)
-    return search_filter.query()
+async def get_data(filters: Filter, search_string: str) -> List[Data]:
+    database_query.update_filters(filters)
+    database_query.update_search_string(search_string)
+    return database_query.query_filter_and_search()
+
+
+@app.get('/data-sources/{source_id}')
+async def get_source_id(source_id: int) -> List[Data]:
+    return database_query.query_source_id(source_id)
 
 
 @app.get('/header')
 async def get_header_data():
-    return {"message": "how are you?", "name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}
+    return {"name": "Ina Ding", "photo": "/images/duke_wordmark_white.png"}

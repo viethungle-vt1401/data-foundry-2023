@@ -25,6 +25,12 @@ export default function Footer() {
                     </ul>
                 </div>
                 <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <p className = "text-normal text-white text-right mx-auto text-base mr-12">
+                    Duke University
+                    <br></br>
+                    401 Chapel Dr, Durham, NC 27705
+
+                </p>
             </div>
         </footer>
     )

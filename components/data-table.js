@@ -10,8 +10,6 @@ export default function DataTable({ filters, searchString }) {
     const [databases, setDatabases] = useState([])
 
     useEffect(() => {
-        console.log(filters.filters)
-        console.log(searchString)
         fetch("/api/data-table/" + searchString, {
           method: 'POST',
           headers: {
@@ -71,13 +69,12 @@ export default function DataTable({ filters, searchString }) {
     );
 
     return (
-      <div className="relative overflow-x-auto sm:rounded-lg">
+      <div className="relative overflow-x-auto sm:rounded-lg mr-10">
 
-        <table className = "border-hidden border-spacing-px w-screen my-5">
+        <table className = "border-hidden border-spacing-px w-full my-5">
      
           <tbody>   
-            {databases.map(({data_source, platform, office, poc, app_auth, sensitivity, 
-                                req_proc, req_form, app_req, provided, freeq, notes, description, icon}) => 
+            {databases.map(({data_source, office, poc, sensitivity, freeq, description, icon, uid}) => 
               <tr className = "hover:bg-gray-200 rounded-l-lg">                
                 
                 <td className = "rounded-l-lg">
@@ -85,25 +82,27 @@ export default function DataTable({ filters, searchString }) {
                 </td>
                 
                 <td className = "rounded-r-lg text-left pl-10 pt-3 pb-3">
-                  <div className = "pl-4 text-left">
-                    <span className = "uppercase text-2xl">{data_source}</span>
-                    <span className = "font-thin text-s ml-2 text-gray-600">{office.split(",").join(", ")}</span> 
-                  </div>
+                  <a href = {`/data-sources/${uid}`}>
+                    <div className = "pl-4 text-left">
+                      <span className = "uppercase text-2xl">{data_source}</span>
+                      <span className = "font-thin text-s ml-2 text-gray-600">{office.split(",").join(", ")}</span> 
+                    </div>
 
-                  <div>
-                    <span className = "pl-4">Person of Contact: </span>
-                    <span className = "font-thin">{poc.split(",").join(", ")}</span>
-                  </div>
+                    <div>
+                      <span className = "pl-4">Person of Contact: </span>
+                      <span className = "font-thin">{poc.split(",").join(", ")}</span>
+                    </div>
 
-                  <div className = "pl-4 ">
-                    <span className = "font-thin text-s">{description}</span>
-                  </div>
+                    <div className = "pl-4 ">
+                      <span className = "font-thin text-s">{description}</span>
+                    </div>
           
-                  <div className = "flex items-left mt-4 mb-2">
-                    <img src = {checkLock(sensitivity)} alt = "Sensitive" width = "30" height = "30" className = "pl-3 mr-5"></img>
-                    <img src = {checkUnlock(sensitivity)} alt = "Restricted" width = "30" height = "30" className = "pl-3 ml-5 mr-5"></img>
-                    <img src = {checkPublic(sensitivity)} alt = "Public" width = "30" height = "30" className = "pl-3 ml-3 mr-7"></img>
-                  </div> 
+                    <div className = "flex items-left mt-4 mb-2">
+                      <img src = {checkLock(sensitivity)} alt = "Sensitive" width = "30" height = "30" className = "pl-3 mr-5"></img>
+                      <img src = {checkUnlock(sensitivity)} alt = "Restricted" width = "30" height = "30" className = "pl-3 ml-5 mr-5"></img>
+                      <img src = {checkPublic(sensitivity)} alt = "Public" width = "30" height = "30" className = "pl-3 ml-3 mr-7"></img>
+                    </div> 
+                  </a>
               
                 </td>
               </tr>)} 

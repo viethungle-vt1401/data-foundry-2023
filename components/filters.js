@@ -44,7 +44,7 @@ export default function Filters({ setFilters }) {
             <div>
                 {/* label for sensitivity dropdown */}
                 <label className = "pl-10 text-base/loose" htmlFor="sensitivity">Sensitivity: </label>
-                <select className = "ml-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="sensitivity" id="sensitivity" onChange={handleFilter}>
+                <select className = "ml-10 -mr-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="sensitivity" id="sensitivity" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="Public" >Public </option>
                     <option value="Restricted">Restricted</option>
@@ -54,7 +54,7 @@ export default function Filters({ setFilters }) {
             <div>
                 {/* label for request_process dropdown */}
                 <label className = "pl-10 text-base/loose" htmlFor="request_process">Request Process: </label>
-                <select className = "ml-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_process" id="req_proc" onChange={handleFilter}>
+                <select className = "ml-10 -mr-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_process" id="req_proc" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="True">True</option>
                     <option value="False">False</option>
@@ -63,7 +63,7 @@ export default function Filters({ setFilters }) {
             <div>
                 {/* label for request_form dropdown */}
                 <label className = "pl-10 text-base/loose" htmlFor="request_form">Request Form: </label>
-                <select className = "ml-10 pr-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_form" id="req_form" onChange={handleFilter}>
+                <select className = "ml-10 border-solid border-2 border-slate-500 rounded-md shadow-lg border-solid" name="request_form" id="req_form" onChange={handleFilter}>
                     <option value="All">All</option>
                     <option value="True">True</option>
                     <option value="False">False</option>
