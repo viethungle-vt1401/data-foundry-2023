@@ -9,7 +9,7 @@
 
 # next.js
 node_modules/
-/.next/
+.next/
 /out/
 package-lock.json
 
