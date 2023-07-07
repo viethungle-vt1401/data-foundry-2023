@@ -13,7 +13,7 @@ export default function SearchBar({ setSearchString }) {
       <div className="input-wrapper">
         <FaSearch className = "m-2" id="search-icon"/>
         <input
-          placeholder = "Type Data Source/Person of Contact" 
+          placeholder = "Search Data Foundry" 
           value={input} onChange = {(e) => handleChange(e.target.value)}/> 
       </div>
     );
