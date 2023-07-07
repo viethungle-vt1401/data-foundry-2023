@@ -36,8 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 # api 
-api/__pycache__/*
-api/.env
+data-foundry-fastapi/__pycache__/*
+data-foundry-fastapi/.env
 
 # vscode
 /.vscode/
