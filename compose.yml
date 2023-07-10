@@ -1,0 +1,17 @@
+services:
+  app:
+    build:
+      context: ./data-foundry-app
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - fastapi
+  fastapi:
+    build:
+      context: ./data-foundry-fastapi
+      dockerfile: Dockerfile
+    env_file:
+      - ./data-foundry-fastapi/.env
+    ports:
+      - 8000:8000
