@@ -13,5 +13,3 @@ services:
       dockerfile: Dockerfile
     env_file:
       - ./data-foundry-fastapi/.env
-    ports:
-      - 8000:8000

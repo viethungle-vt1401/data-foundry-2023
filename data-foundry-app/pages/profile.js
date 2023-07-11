@@ -5,22 +5,6 @@ import SearchBar from '@/components/search-bar'
 import Header from '@/components/header'
  
 export default function Profile({ setSearchString }) {
-  const [data, setData] = useState(null)
-  const [isLoading, setLoading] = useState(false)
- 
-  useEffect(() => {
-    setLoading(true)
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
-      })
-  }, [])
- 
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
- 
   return (
     <div>
       <Header />

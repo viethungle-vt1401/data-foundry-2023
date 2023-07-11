@@ -15,7 +15,7 @@ export default function Header() {
     if (!data) return;
 
     return (
-        <header className="bg-duke-navy-blue">
+      <header className="bg-duke-navy-blue">
         <div id="header-block" className="flex">
           <img id = "logo" src = {data.photo} alt = "duke logo" height = {75} width = {250} className="-ml-10 -mr-10 -mb-4 -mt-4"/>
           <h1 className="text-dandelion px-3.5 font-thin mt-6 -ml-10">Data Foundry</h1>
