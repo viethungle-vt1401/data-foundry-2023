@@ -7,9 +7,17 @@ services:
       - 3000:3000
     depends_on:
       - fastapi
+    volumes:
+      - type: bind
+        source: ./data-foundry-app
+        target: /code
   fastapi:
     build:
       context: ./data-foundry-fastapi
       dockerfile: Dockerfile
     env_file:
       - ./data-foundry-fastapi/.env
+    volumes:
+      - type: bind
+        source: ./data-foundry-fastapi
+        target: /code

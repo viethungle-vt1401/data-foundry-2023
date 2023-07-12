@@ -20,7 +20,7 @@ class Data(BaseModel):
     freeq: Union[str, None]
     description: str
     icon: str
-    uid: str
+    uid: int
 
 
 # app connects to fastapi so is why we say main:app when running uvicorn
