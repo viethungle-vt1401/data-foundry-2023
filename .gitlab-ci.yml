@@ -10,9 +10,9 @@
       docker build
       --file data_foundry_${IMAGE}/Dockerfile
       --pull
-      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}/${IMAGE}"
+      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}_${IMAGE}:${IMAGE_TAG}"
       .
-    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}/${IMAGE}"
+    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}_${IMAGE}:${IMAGE_TAG}"
 
 build_app:
   variables:
