@@ -11,9 +11,9 @@
       docker build
       --file Dockerfile
       --pull
-      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}_${IMAGE}:${IMAGE_TAG}"
+      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}-${IMAGE}:${IMAGE_TAG}"
       .
-    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}_${IMAGE}:${IMAGE_TAG}"
+    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}-${IMAGE}:${IMAGE_TAG}"
 
 build_app:
   variables:
