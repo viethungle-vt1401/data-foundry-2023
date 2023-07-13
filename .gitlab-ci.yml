@@ -5,18 +5,27 @@
       alias: docker
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  stage: build
   script:
     - >
       docker build
-      --file Dockerfile
+      --file data_foundry_${IMAGE}/Dockerfile
       --pull
-      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}"
+      -t "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}/${IMAGE}"
       .
-    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}"
+    - docker push "$CI_REGISTRY_IMAGE/${IMAGE_SLUG}:${IMAGE_TAG}/${IMAGE}"
 
-build_image:
+build_app:
   variables:
+    IMAGE: app
     IMAGE_SLUG: $CI_PROJECT_NAME
     IMAGE_TAG: $CI_COMMIT_BRANCH
   extends: .build
+
+build_fastapi:
+  variables:
+    IMAGE: fastapi
+    IMAGE_SLUG: $CI_PROJECT_NAME
+    IMAGE_TAG: $CI_COMMIT_BRANCH
+  extends: .build
+
+

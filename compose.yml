@@ -15,8 +15,6 @@ services:
     build:
       context: ./data-foundry-fastapi
       dockerfile: Dockerfile
-    env_file:
-      - ./data-foundry-fastapi/.env
     volumes:
       - type: bind
         source: ./data-foundry-fastapi
