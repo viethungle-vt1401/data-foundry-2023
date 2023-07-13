@@ -1,6 +1,6 @@
 services:
   app:
-    image: gitlab-registry.oit.duke.edu/codeplus/data-foundry-2023/data-foundry-2023-app
+    image: gitlab-registry.oit.duke.edu/codeplus/data-foundry-2023/data-foundry-2023-app:dockerize
     ports:
       - 3000:3000
     depends_on:
@@ -10,7 +10,7 @@ services:
         source: ./data-foundry-app
         target: /code
   fastapi:
-    image: gitlab-registry.oit.duke.edu/codeplus/data-foundry-2023/data-foundry-2023-fastapi
+    image: gitlab-registry.oit.duke.edu/codeplus/data-foundry-2023/data-foundry-2023-fastapi:dockerize
     volumes:
       - type: bind
         source: ./data-foundry-fastapi
