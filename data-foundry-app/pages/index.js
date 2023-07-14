@@ -5,6 +5,8 @@ import Filters from '@/components/filters';
 import Footer from '@/components/footer';
 import SensitivityKey from '@/components/sensitivity-key';
 
+// Go Data Foundry!
+
 export default function Home() {
   const [filters, setFilters] = useState({
     "filters": {
