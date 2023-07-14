@@ -29,7 +29,6 @@ export default function Footer() {
                     Duke University
                     <br></br>
                     401 Chapel Dr, Durham, NC 27705
-
                 </p>
             </div>
         </footer>
