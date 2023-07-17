@@ -1,8 +1,6 @@
 import psycopg2
 import os
-# from dotenv import dotenv_values
 
-# FILTER_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
 FILTER_QUERIES = {
     "office": "'{}' = ANY(office)",
     "sensitivity": "'{}' = ANY(sensitivity)",
@@ -15,8 +13,6 @@ SEARCH_QUERIES = {
     "data_source": "LOWER(data_source) LIKE LOWER('%{}%')",
     "poc": "EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE LOWER(name) LIKE LOWER('%{}%'))"
 }
-
-# CONFIG = dotenv_values(".env")
 
 
 class DatabaseQuery:
