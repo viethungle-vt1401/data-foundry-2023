@@ -1,5 +1,6 @@
 import psycopg2
-from dotenv import dotenv_values
+import os
+# from dotenv import dotenv_values
 
 # FILTER_QUERIES is a shortcut "map" so we dont have to type everything out if we add new filters
 FILTER_QUERIES = {
@@ -15,7 +16,7 @@ SEARCH_QUERIES = {
     "poc": "EXISTS (SELECT * FROM unnest(datainv.poc) name WHERE LOWER(name) LIKE LOWER('%{}%'))"
 }
 
-CONFIG = dotenv_values(".env")
+# CONFIG = dotenv_values(".env")
 
 
 class DatabaseQuery:
@@ -32,11 +33,11 @@ class DatabaseQuery:
 
         self.search_string = ""
 
-        self.connection = psycopg2.connect(database=CONFIG["DATABASE"],
-                                           user=CONFIG["DB_USERNAME"],
-                                           password=CONFIG["DB_PASSWORD"],
-                                           host=CONFIG["DB_HOST"],
-                                           port=CONFIG["DB_PORT"])
+        self.connection = psycopg2.connect(database=os.environ.get("DATABASE"),
+                                           user=os.environ.get("DB_USERNAME"),
+                                           password=os.environ.get("DB_PASSWORD"),
+                                           host=os.environ.get("DB_HOST"),
+                                           port=os.environ.get("DB_PORT"))
 
         self.cur = self.connection.cursor()
 
