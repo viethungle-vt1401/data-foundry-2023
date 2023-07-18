@@ -8,8 +8,6 @@ RUN npm install
 
 COPY ./ /code
 
-CMD npm run dev
-
 RUN chgrp -R 0 /code && \
     chmod ug+w -R /code && \
     mkdir /.npm && \
@@ -17,3 +15,5 @@ RUN chgrp -R 0 /code && \
     chmod ug+w -R /.npm
 
 USER 1000
+
+CMD npm run dev
