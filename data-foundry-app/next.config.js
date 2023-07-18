@@ -4,7 +4,7 @@ module.exports = { async rewrites() {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://fastapi:8000/:path*'
+        destination: process.env.APP_API_URL + "/:path*"
       }
     ]
   }

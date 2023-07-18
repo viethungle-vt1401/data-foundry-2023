@@ -37,7 +37,7 @@ next-env.d.ts
 
 # api 
 data-foundry-fastapi/__pycache__/*
-data-foundry-fastapi/.env
+.env
 
 # vscode
 /.vscode/

@@ -9,10 +9,11 @@ services:
       - type: bind
         source: ./data-foundry-app
         target: /code
+    env_file: ./.env
   fastapi:
     image: gitlab-registry.oit.duke.edu/codeplus/data-foundry-2023/data-foundry-2023-fastapi:dockerize
     volumes:
       - type: bind
         source: ./data-foundry-fastapi
         target: /code
-    env_file: ./data-foundry-fastapi/.env
+    env_file: ./.env
