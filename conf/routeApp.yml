@@ -1,0 +1,11 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: app-route
+  namespace: hvl5-cli-deployment
+spec:
+  to:
+    kind: Service
+    name: app-service
+  port:
+    targetPort: 3000
