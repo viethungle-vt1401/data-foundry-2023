@@ -1,8 +1,14 @@
+stages:
+  - build
+  - deploy
+
+
 .build:
   image: image-mirror-prod-registry.cloud.duke.edu/library/docker:20
   services:
     - name: docker:dind
       alias: docker
+  stage: build
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - cd ${IMAGE_DIR}
@@ -32,3 +38,20 @@ build_fastapi:
   extends: .build
 
 
+.deploy:
+  image: gitlab-registry.oit.duke.edu/duke_openshift_users/community-supported-resources/build-helper:alpine
+  stage: deploy
+  before_script:
+    - oc login ${OKD_URL} --token=${OKD_TOKEN}
+    - oc project hvl5-cli-deployment
+  script:
+    - oc patch dc ${APP_DEPLOYMENT_CONFIG} -p '{"spec":{"template":{"metadata":{"labels":{"version":"'$CI_COMMIT_SHA'"}}}}}'
+    - oc patch dc ${FASTAPI_DEPLOYMENT_CONFIG} -p '{"spec":{"template":{"metadata":{"labels":{"version":"'$CI_COMMIT_SHA'"}}}}}'
+
+deploy:
+  variables:
+    OKD_URL: https://api.dev.okd4.fitz.cloud.duke.edu:6443
+    OKD_TOKEN: $OKD_DEVELOP_TOKEN
+    APP_DEPLOYMENT_CONFIG: data-foundry-2023-app-dev
+    FASTAPI_DEPLOYMENT_CONFIG: data-foundry-2023-fastapi-dev
+  extends: .deploy
