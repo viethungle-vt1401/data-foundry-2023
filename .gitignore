@@ -44,3 +44,6 @@ data-foundry-fastapi/__pycache__/*
 # env configs & secrets
 .env
 .env.secrets
+
+# shib
+conf/shib

@@ -6,6 +6,8 @@ metadata:
 spec:
   to:
     kind: Service
-    name: app-service
+    name: shib-service
   port:
-    targetPort: 3000
+    targetPort: 8080
+  tls:
+    termination: edge
