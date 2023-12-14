@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: app-service
-  namespace: hvl5-cli-deployment
+  namespace: cli-deployment
 spec:
   ports:
     - protocol: TCP

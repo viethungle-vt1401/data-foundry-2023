@@ -2,7 +2,7 @@ kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
   name: data-foundry-2023-fastapi-dev
-  namespace: hvl5-cli-deployment
+  namespace: cli-deployment
 spec:
   replicas: 1
   template:

@@ -11,7 +11,7 @@
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
 		<!-- todo signing should be false -->
-    <ApplicationDefaults entityID="https://app-route-hvl5-cli-deployment.apps.dev.okd4.fitz.cloud.duke.edu"
+    <ApplicationDefaults entityID="https://app-route-cli-deployment.apps.dev.okd4.fitz.cloud.duke.edu"
         REMOTE_USER="eppn" signing="false" encryption="true">
 
         <!--

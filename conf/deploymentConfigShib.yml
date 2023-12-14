@@ -1,7 +1,7 @@
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
-  namespace: hvl5-cli-deployment
+  namespace: cli-deployment
   name: data-foundry-2023-shib
 spec:
   replicas: 1

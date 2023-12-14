@@ -43,7 +43,7 @@ build_fastapi:
   stage: deploy
   before_script:
     - oc login ${OKD_URL} --token=${OKD_TOKEN}
-    - oc project hvl5-cli-deployment
+    - oc project cli-deployment
   script:
     - oc patch dc ${APP_DEPLOYMENT_CONFIG} -p '{"spec":{"template":{"metadata":{"labels":{"version":"'$CI_COMMIT_SHA'"}}}}}'
     - oc patch dc ${FASTAPI_DEPLOYMENT_CONFIG} -p '{"spec":{"template":{"metadata":{"labels":{"version":"'$CI_COMMIT_SHA'"}}}}}'
